@@ -4,177 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>合同会社結縁地 | Yuenchi LLC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600&family=Noto+Sans+JP:wght@100;300;400&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a1a1a;
-            --accent: #8e7d4b; /* 上品なゴールド系 */
-            --bg: #ffffff;
-            --light-gray: #f9f9f9;
+            --primary: #111111;
+            --accent: #9d896a; /* 高級感のあるシャンパンゴールド */
+            --text-muted: #666666;
+            --bg-offset: #fcfcfc;
+            --transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Noto Sans JP', sans-serif;
             color: var(--primary);
-            line-height: 1.8;
+            background-color: #fff;
+            line-height: 1.7;
             overflow-x: hidden;
+            word-break: break-all;
         }
 
-        h1, h2, .logo { font-family: 'Noto Serif JP', serif; }
+        /* --- Loading Animation --- */
+        .reveal-text { overflow: hidden; }
+        .reveal-text span { display: block; transform: translateY(100%); transition: var(--transition); }
+        .aos-animate .reveal-text span { transform: translateY(0); }
 
-        /* ヘッダー */
+        /* --- Header --- */
         header {
-            position: fixed;
-            width: 100%;
-            padding: 20px 5%;
-            background: rgba(255,255,255,0.95);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+            position: fixed; top: 0; width: 100%; padding: 30px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; transition: var(--transition);
         }
-        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 0.1em; }
-        .logo span { display: block; font-size: 0.7rem; font-family: 'Noto Sans JP'; font-weight: 300; }
+        .logo { font-family: 'Noto Serif JP', serif; font-weight: 600; letter-spacing: 0.2em; font-size: 1.1rem; }
+        .logo span { font-family: 'Noto Sans JP'; font-weight: 100; font-size: 0.65rem; display: block; letter-spacing: 0.3em; margin-top: 4px; }
 
-        /* ヒーローエリア */
+        /* --- Hero --- */
         .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1920&q=80') center/cover;
-            color: #fff;
-            padding: 0 20px;
+            position: relative; height: 100vh; width: 100%;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; background: #000;
         }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070'); /* 後で差し替え */
+            background-size: cover; background-position: center;
+            opacity: 0.7; transform: scale(1.1); transition: transform 10s ease-out;
+        }
+        .hero.aos-animate .hero-bg { transform: scale(1); }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; }
         .hero-content h1 {
-            font-size: clamp(1.8rem, 5vw, 3.5rem);
-            margin-bottom: 20px;
-            letter-spacing: 0.15em;
-            line-height: 1.4;
-        }
-        .hero-content p { font-size: 1.1rem; letter-spacing: 0.2em; font-weight: 300; }
-
-        /* セクション共通 */
-        section { padding: 100px 10%; }
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-title span { color: var(--accent); font-size: 0.9rem; letter-spacing: 0.3em; text-transform: uppercase; }
-        .section-title h2 { font-size: 2rem; margin-top: 10px; position: relative; padding-bottom: 15px; }
-        .section-title h2::after {
-            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-            width: 40px; height: 1px; background: var(--accent);
+            font-family: 'Noto Serif JP', serif; font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 300; letter-spacing: 0.3em; line-height: 1.8;
         }
 
-        /* サービスカード */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+        /* --- Layout Sections --- */
+        section { padding: 140px 10%; position: relative; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .section-label {
+            font-size: 0.7rem; letter-spacing: 0.5em; text-transform: uppercase;
+            color: var(--accent); display: block; margin-bottom: 20px;
         }
-        .service-card {
-            background: var(--light-gray);
-            padding: 40px;
-            border-radius: 2px;
-            transition: all 0.4s ease;
+
+        /* Philosophy (Text Centered) */
+        .concept-text {
+            font-family: 'Noto Serif JP', serif; font-size: 1.4rem;
+            text-align: center; max-width: 800px; margin: 0 auto;
+            line-height: 2.2; font-weight: 300;
         }
-        .service-card:hover { background: #fff; shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .service-card h3 { font-family: 'Noto Serif JP'; margin-bottom: 20px; color: var(--accent); }
 
-        /* 会社概要テーブル */
-        .company-table {
-            width: 100%; max-width: 800px; margin: 0 auto;
-            border-top: 1px solid #eee;
+        /* Business (Alternating Image/Text) */
+        .row { display: flex; align-items: center; margin-bottom: 120px; gap: 60px; }
+        .row:nth-child(even) { flex-direction: row-reverse; }
+        .col-img { flex: 1.2; position: relative; }
+        .col-text { flex: 0.8; }
+        
+        .img-wrapper {
+            position: relative; width: 100%; padding-top: 65%;
+            background: var(--bg-offset); overflow: hidden;
         }
-        .company-table tr { border-bottom: 1px solid #eee; }
-        .company-table th, .company-table td { padding: 25px 15px; text-align: left; }
-        .company-table th { width: 30%; font-weight: 500; color: #666; font-size: 0.9rem; }
+        .img-wrapper img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; transition: var(--transition);
+        }
+        .img-wrapper:hover img { transform: scale(1.05); }
 
-        footer { background: var(--primary); color: #fff; padding: 60px 10%; text-align: center; font-size: 0.8rem; }
-        .footer-logo { font-family: 'Noto Serif JP'; font-size: 1.2rem; margin-bottom: 20px; display: block; }
+        .row h3 { font-family: 'Noto Serif JP', serif; font-size: 1.8rem; margin-bottom: 20px; font-weight: 300; }
+        .row p { color: var(--text-muted); font-size: 0.95rem; font-weight: 300; }
 
+        /* --- Company Info --- */
+        .info-grid { border-top: 1px solid #eee; margin-top: 40px; }
+        .info-item {
+            display: flex; padding: 30px 0; border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        .info-label { width: 30%; color: var(--text-muted); font-weight: 300; }
+        .info-content { width: 70%; font-weight: 400; }
+
+        /* --- Footer --- */
+        footer { padding: 100px 5% 50px; text-align: center; border-top: 1px solid #f5f5f5; }
+        .footer-logo { font-family: 'Noto Serif JP', serif; letter-spacing: 0.4em; font-size: 1rem; margin-bottom: 40px; }
+        .copyright { font-size: 0.65rem; color: #999; letter-spacing: 0.1em; }
+
+        /* --- Responsive --- */
         @media (max-width: 768px) {
-            section { padding: 60px 5%; }
-            .hero-content h1 { font-size: 1.6rem; }
+            section { padding: 80px 5%; }
+            .row { flex-direction: column !important; gap: 30px; margin-bottom: 80px; }
+            .hero-content h1 { font-size: 1.3rem; letter-spacing: 0.2em; }
+            .concept-text { font-size: 1.1rem; }
         }
     </style>
 </head>
-<body>
+<body data-aos-easing="ease-out-quart" data-aos-duration="1200" data-aos-delay="0">
 
 <header>
-    <div class="logo">合同会社結縁地<span>YUENCHI LLC</span></div>
+    <div class="logo">結縁地<span>YUENCHI LLC</span></div>
 </header>
 
-<main>
-    <section class="hero">
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
-            <h1>価値あるモノを未来へ繋ぎ、<br>新たな生き方を創造する</h1>
-            <p>Connection & Creation</p>
-        </div>
-    </section>
+<div class="hero" data-aos="fade">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <h1 data-aos="fade-up" data-aos-delay="500">
+            価値あるモノを未来へ繋ぎ、<br>新たな生き方を創造する
+        </h1>
+    </div>
+</div>
 
-    <section id="about">
-        <div class="section-title" data-aos="fade-up">
-            <span>Philosophy</span>
-            <h2>理念</h2>
+<section id="philosophy">
+    <div class="container" data-aos="fade-up">
+        <span class="section-label">Philosophy</span>
+        <div class="concept-text">
+            <p>「結縁地（ユウエンチ）」は、<br>良い品と人、そして新しい生き方を<br>目指す人々との「縁」を結ぶ地。</p>
         </div>
-        <div style="max-width: 700px; margin: 0 auto; text-align: center;" data-aos="fade-up" data-aos-delay="200">
-            <p>「結縁地（ユウエンチ）」という名には、良い品と人、そして新しい働き方を目指す人々との「縁」を結ぶ場所でありたいという想いが込められています。<br>私たちは誠実なビジネスを通じて、持続可能な循環と共生を目指します。</p>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <section id="services" style="background: var(--light-gray);">
-        <div class="section-title" data-aos="fade-up">
-            <span>Business</span>
-            <h2>事業内容</h2>
-        </div>
-        <div class="services-grid">
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <h3>ブランドリセール事業</h3>
-                <p>確かな鑑定眼と熟練のリペア技術により、ブランド品本来の輝きを取り戻します。サステナブルな社会の実現に向け、価値の再定義を行います。</p>
+<section id="business" style="background: var(--bg-offset);">
+    <div class="container">
+        <span class="section-label">Our Business</span>
+        
+        <div class="row" data-aos="fade-up">
+            <div class="col-img">
+                <div class="img-wrapper"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1000" alt="Resale"></div>
             </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <h3>越境EC事業</h3>
-                <p>Shopeeなどのプラットフォームを活用し、日本の優れた製品を世界へ。国境を越えた「縁」を構築し、価値を最大化します。</p>
-            </div>
-            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                <h3>物販スクール LunaFlow</h3>
-                <p>女性の自立を支援する伴走型コミュニティ。再現性の高いノウハウとIT活用で、自分らしい働き方の実現をサポートします。</p>
+            <div class="col-text">
+                <h3>Brand Resale</h3>
+                <p>確かな鑑定眼と熟練のリペア技術。ブランド品本来の輝きを取り戻し、サステナブルな未来へ繋ぎます。</p>
             </div>
         </div>
-    </section>
 
-    <section id="company">
-        <div class="section-title" data-aos="fade-up">
-            <span>Company</span>
-            <h2>会社概要</h2>
+        <div class="row" data-aos="fade-up">
+            <div class="col-img">
+                <div class="img-wrapper"><img src="https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?q=80&w=1000" alt="EC"></div>
+            </div>
+            <div class="col-text">
+                <h3>Global EC</h3>
+                <p>Shopeeなどのプラットフォームを通じ、日本の価値を世界へ。国境を越えた新たな市場を開拓します。</p>
+            </div>
         </div>
-        <table class="company-table" data-aos="fade-up">
-            <tr><th>社名</th><td>合同会社結縁地（ユウエンチ）</td></tr>
-            <tr><th>英語表記</th><td>Yuenchi LLC</td></tr>
-            <tr><th>所在地</th><td>（※ご住所を入力してください）</td></tr>
-            <tr><th>古物商許可</th><td>（※許可番号を入力してください）</td></tr>
-        </table>
-    </section>
-</main>
+
+        <div class="row" data-aos="fade-up">
+            <div class="col-img">
+                <div class="img-wrapper"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000" alt="School"></div>
+            </div>
+            <div class="col-text">
+                <h3>LunaFlow</h3>
+                <p>自立を目指す女性のための物販スクール。最新のITツールと伴走型のサポートで、自由な働き方を実現します。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="company">
+    <div class="container" data-aos="fade-up">
+        <span class="section-label">Company Profile</span>
+        <div class="info-grid">
+            <div class="info-item"><div class="info-label">商号</div><div class="info-content">合同会社結縁地（ユウエンチ）</div></div>
+            <div class="info-item"><div class="info-label">英語表記</div><div class="info-content">Yuenchi LLC</div></div>
+            <div class="info-item"><div class="info-label">古物商許可</div><div class="info-content">ここに許可番号を入力</div></div>
+            <div class="info-item"><div class="info-label">所在地</div><div class="info-content">ここに住所を入力</div></div>
+        </div>
+    </div>
+</section>
 
 <footer>
-    <span class="footer-logo">YUENCHI LLC</span>
-    <p>&copy; 2026 Yuenchi LLC. All rights reserved.</p>
+    <div class="footer-logo">結縁地<span>YUENCHI LLC</span></div>
+    <div class="copyright">&copy; 2026 Yuenchi LLC. All rights reserved.</div>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({
-        once: true, // アニメーションを一度だけ実行
-        duration: 1000,
-        easing: 'ease-out-quart'
+        once: false,
+        duration: 1500,
+        easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
     });
 </script>
 </body>
