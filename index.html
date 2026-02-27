@@ -7,131 +7,151 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400&family=Noto+Sans+JP:wght@100;300&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-color: #1a1a1a;
+            --text-color: #ffffff;
             --accent-color: #8c7b52;
+            --nav-bg: rgba(26, 26, 26, 0.8);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: var(--bg-color);
+            background-color: #000;
             color: var(--text-color);
             font-family: 'Noto Sans JP', sans-serif;
-            line-height: 1;
             overflow-x: hidden;
+            height: 300vh; /* スクロール量を作るための高さ */
         }
 
-        /* --- Header (極限までシンプルに) --- */
+        /* --- 追従ヘッダー --- */
         header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+            transition: background 0.3s;
+        }
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-icon { width: 32px; height: 32px; background: #2e7d32; border-radius: 8px; } /* スクショの緑アイコン再現 */
+        .logo-text { font-family: 'Noto Serif JP', serif; font-size: 1rem; letter-spacing: 0.1em; }
+        .logo-text span { display: block; font-size: 0.6rem; font-family: 'Noto Sans JP'; font-weight: 100; }
+
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav a { text-decoration: none; color: #fff; font-size: 0.85rem; font-weight: 300; }
+        .btn-contact { background: #2e7d32; padding: 10px 20px; border-radius: 5px; font-weight: bold; }
+
+        /* --- 扉と店内の演出エリア --- */
+        .viewport {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 40px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            z-index: 100;
-        }
-        .logo {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.1rem;
-            font-weight: 400;
-            letter-spacing: 0.3em;
-            color: #fff; /* 背景が暗いことを想定 */
-        }
-        .logo span {
-            display: block;
-            font-family: 'Noto Sans JP', sans-serif;
-            font-weight: 100;
-            font-size: 0.6rem;
-            letter-spacing: 0.4em;
-            margin-top: 8px;
-            opacity: 0.8;
+            height: 100vh;
+            perspective: 1000px;
         }
 
-        /* --- Hero Section (ここを完璧に再現) --- */
-        .hero {
-            position: relative;
+        /* 店内画像（奥） */
+        .interior {
+            position: absolute;
             width: 100%;
             height: 100vh;
-            overflow: hidden;
-            background-color: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: url('https://r.jina.ai/i/068ecf93f18a4a5893f411e61947b99c') center/cover no-repeat;
+            z-index: 1;
         }
 
-        /* 背景画像のズームアニメーション */
-        .hero-bg {
+        /* 扉画像（手前） */
+        .door {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.6;
-            animation: zoomOut 15s ease-out forwards;
-        }
-
-        @keyframes zoomOut {
-            0% { transform: scale(1.2); }
-            100% { transform: scale(1.0); }
-        }
-
-        .hero-content {
-            position: relative;
+            height: 100vh;
+            background: url('https://r.jina.ai/i/9e240989f67a488e9389230580974390') center/cover no-repeat;
             z-index: 2;
+            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+        }
+
+        /* 店内に現れる文字 */
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
             text-align: center;
-            color: #fff;
-        }
-
-        .hero-content h1 {
-            font-family: 'Noto Serif JP', serif;
-            font-size: clamp(1.2rem, 3.5vw, 2.8rem);
-            font-weight: 200;
-            letter-spacing: 0.4em;
-            line-height: 2.2;
+            width: 90%;
             opacity: 0;
-            animation: fadeInBlur 3s ease-out 1s forwards;
+            transition: opacity 0.5s ease-out;
+        }
+        .hero-text h1 { font-family: 'Noto Serif JP', serif; font-size: 3.5rem; letter-spacing: 0.2em; margin-bottom: 20px; }
+        .hero-text p { font-size: 1rem; line-height: 2; font-weight: 100; }
+
+        /* スクロールガイド */
+        .scroll-guide {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-align: center;
         }
 
-        @keyframes fadeInBlur {
-            0% { opacity: 0; filter: blur(10px); transform: translateY(20px); }
-            100% { opacity: 1; filter: blur(0); transform: translateY(0); }
-        }
-
-        /* 次のセクションへの余白（確認用） */
-        .spacer { height: 100vh; background: #fff; }
-
-        @media (max-width: 768px) {
-            header { padding: 30px 20px; }
-            .hero-content h1 { font-size: 1.1rem; letter-spacing: 0.2em; }
-        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">
-        結縁地
-        <span>YUENCHI LLC</span>
+<header id="main-header">
+    <div class="logo-area">
+        <div class="logo-icon"></div>
+        <div class="logo-text">結縁地<span>Yuenchi LLC</span></div>
     </div>
+    <nav>
+        <ul>
+            <li><a href="#">ホーム</a></li>
+            <li><a href="#">事業内容</a></li>
+            <li><a href="#">スクール</a></li>
+            <li><a href="#">会社概要</a></li>
+            <li><a href="#" class="btn-contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
 </header>
 
-<div class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-        <h1>
-            価値あるモノを未来へ繋ぎ、<br>
-            新たな生き方を創造する
-        </h1>
+<div class="viewport">
+    <div class="interior" id="interior"></div>
+    <div class="door" id="door"></div>
+    <div class="hero-text" id="hero-text">
+        <h1>ご縁を結ぶ場所</h1>
+        <p>Yuenchi LLC</p>
+        <p>良い品と人、新しい働き方と女性をつなぐ。<br>リセール事業・越境EC・物販スクールを通じて、<br>三方よしの循環型ビジネスを実現します。</p>
     </div>
+    <div class="scroll-guide">SCROLL<br>↓</div>
 </div>
 
-<div class="spacer"></div>
+<script>
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const door = document.getElementById('door');
+        const interior = document.getElementById('interior');
+        const text = document.getElementById('hero-text');
+        
+        // 扉がズームして消えていく動き
+        const doorScale = 1 + (scrolled / 500);
+        const doorOpacity = 1 - (scrolled / 400);
+        
+        if (scrolled < 500) {
+            door.style.transform = `scale(${doorScale})`;
+            door.style.opacity = doorOpacity;
+            text.style.opacity = 0;
+        } else {
+            door.style.opacity = 0;
+            // 扉が消えた後に文字がふわっと出る
+            text.style.opacity = Math.min((scrolled - 500) / 300, 1);
+        }
+    });
+</script>
 
 </body>
 </html>
