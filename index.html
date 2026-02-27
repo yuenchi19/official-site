@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>合同会社結縁地 | Yuenchi LLC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400&family=Noto+Sans+JP:wght@100;300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400&family=Noto+Sans+JP:wght@100;300;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --text-color: #ffffff;
-            --accent-color: #8c7b52;
-            --nav-bg: rgba(26, 26, 26, 0.8);
+            --accent-green: #2e7d32; /* スクショのボタン色 */
+            --font-serif: 'Noto Serif JP', serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,94 +18,77 @@
             color: var(--text-color);
             font-family: 'Noto Sans JP', sans-serif;
             overflow-x: hidden;
-            height: 300vh; /* スクロール量を作るための高さ */
+            height: 350vh; /* 演出のためのスクロール長 */
         }
 
         /* --- 追従ヘッダー --- */
         header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: fixed; top: 0; width: 100%; padding: 20px 4%;
+            display: flex; justify-content: space-between; align-items: center;
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
-            transition: background 0.3s;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
         }
-        .logo-area { display: flex; align-items: center; gap: 10px; }
-        .logo-icon { width: 32px; height: 32px; background: #2e7d32; border-radius: 8px; } /* スクショの緑アイコン再現 */
-        .logo-text { font-family: 'Noto Serif JP', serif; font-size: 1rem; letter-spacing: 0.1em; }
+        .logo-group { display: flex; align-items: center; gap: 12px; }
+        .logo-mark { width: 35px; height: 35px; background: var(--accent-green); border-radius: 6px; }
+        .logo-text { font-family: var(--font-serif); font-size: 1.1rem; letter-spacing: 0.1em; }
         .logo-text span { display: block; font-size: 0.6rem; font-family: 'Noto Sans JP'; font-weight: 100; }
 
-        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav ul { display: flex; list-style: none; gap: 25px; align-items: center; }
         nav a { text-decoration: none; color: #fff; font-size: 0.85rem; font-weight: 300; }
-        .btn-contact { background: #2e7d32; padding: 10px 20px; border-radius: 5px; font-weight: bold; }
+        .nav-contact { background: var(--accent-green); padding: 10px 22px; border-radius: 4px; font-weight: 500; }
 
-        /* --- 扉と店内の演出エリア --- */
-        .viewport {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            perspective: 1000px;
-        }
-
+        /* --- メインビジュアル演出 --- */
+        .stage { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; }
+        
         /* 店内画像（奥） */
-        .interior {
-            position: absolute;
-            width: 100%;
-            height: 100vh;
-            background: url('https://r.jina.ai/i/068ecf93f18a4a5893f411e61947b99c') center/cover no-repeat;
+        .bg-interior {
+            position: absolute; width: 100%; height: 100vh;
+            background: url('interior.jpg') center/cover no-repeat; /* ここをアップロードした名前に */
             z-index: 1;
         }
 
         /* 扉画像（手前） */
-        .door {
-            position: absolute;
-            width: 100%;
-            height: 100vh;
-            background: url('https://r.jina.ai/i/9e240989f67a488e9389230580974390') center/cover no-repeat;
+        .bg-door {
+            position: absolute; width: 100%; height: 100vh;
+            background: url('door.jpg') center/cover no-repeat; /* ここをアップロードした名前に */
             z-index: 2;
-            transition: transform 0.1s ease-out, opacity 0.1s ease-out;
         }
 
-        /* 店内に現れる文字 */
-        .hero-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 3;
-            text-align: center;
-            width: 90%;
-            opacity: 0;
-            transition: opacity 0.5s ease-out;
+        /* ヒーローコンテンツ（文字・ボタン） */
+        .hero-main {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 10; text-align: center; width: 90%; opacity: 0;
         }
-        .hero-text h1 { font-family: 'Noto Serif JP', serif; font-size: 3.5rem; letter-spacing: 0.2em; margin-bottom: 20px; }
-        .hero-text p { font-size: 1rem; line-height: 2; font-weight: 100; }
+        .hero-main h1 { font-family: var(--font-serif); font-size: clamp(2rem, 6vw, 4rem); letter-spacing: 0.2em; margin-bottom: 30px; }
+        .hero-main .sub-text { font-size: 0.95rem; line-height: 2.2; font-weight: 300; margin-bottom: 40px; }
+        
+        /* ボタンエリア */
+        .btn-group { display: flex; justify-content: center; gap: 20px; }
+        .btn-main {
+            display: inline-block; padding: 15px 40px; border-radius: 30px;
+            text-decoration: none; color: #fff; font-size: 0.9rem; font-weight: 500;
+            transition: 0.3s; border: 1px solid rgba(255,255,255,0.5);
+        }
+        .btn-primary { background: var(--accent-green); border: none; }
+        .btn-secondary { background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); }
 
-        /* スクロールガイド */
-        .scroll-guide {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 4;
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
-            text-align: center;
+        .scroll-hint {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            z-index: 15; font-size: 0.65rem; letter-spacing: 0.4em; text-align: center;
         }
 
+        @media (max-width: 768px) {
+            nav ul { display: none; } /* スマホではメニューを一旦隠す（ハンバーガーなどは今後） */
+            .btn-group { flex-direction: column; align-items: center; }
+            .hero-main h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
 
-<header id="main-header">
-    <div class="logo-area">
-        <div class="logo-icon"></div>
+<header>
+    <div class="logo-group">
+        <div class="logo-mark"></div>
         <div class="logo-text">結縁地<span>Yuenchi LLC</span></div>
     </div>
     <nav>
@@ -114,41 +97,53 @@
             <li><a href="#">事業内容</a></li>
             <li><a href="#">スクール</a></li>
             <li><a href="#">会社概要</a></li>
-            <li><a href="#" class="btn-contact">お問い合わせ</a></li>
+            <li><a href="#">ブログ</a></li> <li><a href="#" class="nav-contact">お問い合わせ</a></li>
         </ul>
     </nav>
 </header>
 
-<div class="viewport">
-    <div class="interior" id="interior"></div>
-    <div class="door" id="door"></div>
-    <div class="hero-text" id="hero-text">
+<div class="stage">
+    <div class="bg-interior" id="interior"></div>
+    <div class="bg-door" id="door"></div>
+    
+    <div class="hero-main" id="hero-content">
         <h1>ご縁を結ぶ場所</h1>
-        <p>Yuenchi LLC</p>
-        <p>良い品と人、新しい働き方と女性をつなぐ。<br>リセール事業・越境EC・物販スクールを通じて、<br>三方よしの循環型ビジネスを実現します。</p>
+        <p style="letter-spacing: 0.5em; margin-bottom: 20px; font-weight: 100;">YUENCHI LLC</p>
+        <p class="sub-text">
+            良い品と人、新しい働き方と女性をつなぐ。<br>
+            リセール事業・越境EC・物販スクールを通じて、<br>
+            三方よしの循環型ビジネスを実現します。
+        </p>
+        <div class="btn-group">
+            <a href="#business" class="btn-main btn-primary">事業内容を見る →</a>
+            <a href="#contact" class="btn-main btn-secondary">お問い合わせ</a>
+        </div>
     </div>
-    <div class="scroll-guide">SCROLL<br>↓</div>
+
+    <div class="scroll-hint">SCROLL<br>↓</div>
 </div>
 
 <script>
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
         const door = document.getElementById('door');
-        const interior = document.getElementById('interior');
-        const text = document.getElementById('hero-text');
+        const content = document.getElementById('hero-content');
         
-        // 扉がズームして消えていく動き
-        const doorScale = 1 + (scrolled / 500);
-        const doorOpacity = 1 - (scrolled / 400);
+        // 扉のズームアウト演出
+        const zoomRate = 1 + (scrolled / 400);
+        const opacityRate = 1 - (scrolled / 350);
         
-        if (scrolled < 500) {
-            door.style.transform = `scale(${doorScale})`;
-            door.style.opacity = doorOpacity;
-            text.style.opacity = 0;
+        if (scrolled < 450) {
+            door.style.transform = `scale(${zoomRate})`;
+            door.style.opacity = opacityRate;
+            content.style.opacity = 0;
+            content.style.transform = 'translate(-50%, -40%)'; // 少し下から出る準備
         } else {
             door.style.opacity = 0;
-            // 扉が消えた後に文字がふわっと出る
-            text.style.opacity = Math.min((scrolled - 500) / 300, 1);
+            // 文字とボタンがふわっと浮き上がる
+            const contentOpacity = Math.min((scrolled - 450) / 400, 1);
+            content.style.opacity = contentOpacity;
+            content.style.transform = `translate(-50%, ${-50 - (10 * (1 - contentOpacity))}%)`;
         }
     });
 </script>
