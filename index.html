@@ -4,255 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>合同会社結縁地 | Yuenchi LLC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;600&family=Noto+Sans+JP:wght@100;300;400&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400&family=Noto+Sans+JP:wght@100;300&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* プレビューサイトから抽出した正確なカラーパレット */
-            --bg-main: #ffffff;
-            --bg-sub: #f7f7f7;        /* セクションの切り替え用グレー */
-            --text-primary: #1a1a1a;  /* 完全な黒ではない高級感のある黒 */
-            --text-secondary: #4a4a4a;
-            --accent: #8c7b52;        /* 落ち着いたゴールド */
-            --border: #e5e5e5;
-            --font-serif: 'Noto Serif JP', serif;
-            --font-sans: 'Noto Sans JP', sans-serif;
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --accent-color: #8c7b52;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: var(--font-sans);
-            color: var(--text-primary);
-            background-color: var(--bg-main);
-            line-height: 1.8;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Header --- */
+        /* --- Header (極限までシンプルに) --- */
         header {
-            position: fixed; top: 0; width: 100%; padding: 40px 6%;
-            display: flex; justify-content: space-between; align-items: flex-start;
-            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 100;
         }
-        .logo { 
-            font-family: var(--font-serif); 
-            font-weight: 400; 
-            letter-spacing: 0.3em; 
-            font-size: 1.2rem;
-            line-height: 1.2;
+        .logo {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            color: #fff; /* 背景が暗いことを想定 */
         }
-        .logo span { 
-            font-family: var(--font-sans); 
-            font-weight: 100; 
-            font-size: 0.6rem; 
-            display: block; 
-            letter-spacing: 0.4em; 
+        .logo span {
+            display: block;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 100;
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
             margin-top: 8px;
-            color: var(--text-secondary);
+            opacity: 0.8;
         }
 
-        /* --- Hero (完全再現) --- */
+        /* --- Hero Section (ここを完璧に再現) --- */
         .hero {
-            position: relative; height: 100vh; width: 100%;
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden; background: #000;
-        }
-        .hero-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070');
-            background-size: cover; background-position: center;
-            opacity: 0.6; transform: scale(1.1);
-        }
-        .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; }
-        .hero-content h1 {
-            font-family: var(--font-serif); font-size: clamp(1.4rem, 3.5vw, 2.8rem);
-            font-weight: 200; letter-spacing: 0.35em; line-height: 2.2;
-        }
-
-        /* --- Sections --- */
-        section { padding: 160px 8%; }
-        .container { max-width: 1100px; margin: 0 auto; }
-        
-        .label {
-            font-size: 0.65rem; letter-spacing: 0.6em; text-transform: uppercase;
-            color: var(--accent); display: block; margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        /* Concept */
-        .concept-wrap { text-align: center; padding: 40px 0; }
-        .concept-text {
-            font-family: var(--font-serif); font-size: 1.5rem;
-            line-height: 2.6; font-weight: 200; letter-spacing: 0.15em;
-        }
-
-        /* Business Rows (Grid & Spacing) */
-        .row { display: flex; align-items: center; margin-bottom: 160px; gap: 80px; }
-        .row:last-child { margin-bottom: 0; }
-        .row:nth-child(even) { flex-direction: row-reverse; }
-        
-        .col-img { flex: 1.1; }
-        .col-text { flex: 0.9; }
-        
-        .img-container {
-            width: 100%; aspect-ratio: 3 / 2;
-            background: var(--bg-sub); overflow: hidden;
             position: relative;
-        }
-        .img-container img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 1.5s ease;
-        }
-        .img-container:hover img { transform: scale(1.03); }
-
-        .row h3 { 
-            font-family: var(--font-serif); font-size: 1.8rem; 
-            margin-bottom: 25px; font-weight: 400; letter-spacing: 0.1em;
-        }
-        .row p { 
-            color: var(--text-secondary); font-size: 0.9rem; 
-            font-weight: 300; letter-spacing: 0.05em; line-height: 2;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* --- Company (Table Design) --- */
-        .company-table { width: 100%; border-top: 1px solid var(--border); margin-top: 20px; }
-        .table-row { 
-            display: flex; padding: 35px 0; border-bottom: 1px solid var(--border);
-            font-size: 0.85rem; letter-spacing: 0.05em;
-        }
-        .table-label { width: 30%; font-weight: 400; color: var(--text-secondary); }
-        .table-data { width: 70%; font-weight: 300; }
-
-        /* --- Footer --- */
-        footer { 
-            padding: 120px 6% 60px; text-align: center; 
-            background-color: var(--bg-main);
-        }
-        .footer-logo { 
-            font-family: var(--font-serif); letter-spacing: 0.5em; 
-            font-size: 1.1rem; margin-bottom: 50px; font-weight: 400;
-        }
-        .copyright { 
-            font-size: 0.6rem; color: #aaa; letter-spacing: 0.2em; text-transform: uppercase;
+        /* 背景画像のズームアニメーション */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            animation: zoomOut 15s ease-out forwards;
         }
 
-        /* --- Responsive --- */
-        @media (max-width: 900px) {
-            header { padding: 30px 6%; }
-            section { padding: 100px 6%; }
-            .row { flex-direction: column !important; gap: 40px; margin-bottom: 100px; }
-            .hero-content h1 { font-size: 1.2rem; letter-spacing: 0.25em; }
-            .concept-text { font-size: 1.1rem; line-height: 2.2; }
+        @keyframes zoomOut {
+            0% { transform: scale(1.2); }
+            100% { transform: scale(1.0); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(1.2rem, 3.5vw, 2.8rem);
+            font-weight: 200;
+            letter-spacing: 0.4em;
+            line-height: 2.2;
+            opacity: 0;
+            animation: fadeInBlur 3s ease-out 1s forwards;
+        }
+
+        @keyframes fadeInBlur {
+            0% { opacity: 0; filter: blur(10px); transform: translateY(20px); }
+            100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+        }
+
+        /* 次のセクションへの余白（確認用） */
+        .spacer { height: 100vh; background: #fff; }
+
+        @media (max-width: 768px) {
+            header { padding: 30px 20px; }
+            .hero-content h1 { font-size: 1.1rem; letter-spacing: 0.2em; }
         }
     </style>
 </head>
-<body data-aos-easing="ease-out" data-aos-duration="1200" data-aos-delay="0">
+<body>
 
 <header>
-    <div class="logo" data-aos="fade" data-aos-duration="2000">
-        結縁地<span>YUENCHI LLC</span>
+    <div class="logo">
+        結縁地
+        <span>YUENCHI LLC</span>
     </div>
 </header>
 
 <div class="hero">
-    <div class="hero-bg" data-aos="zoom-out" data-aos-duration="3000"></div>
+    <div class="hero-bg"></div>
     <div class="hero-content">
-        <h1 data-aos="fade-up" data-aos-duration="2000" data-aos-delay="400">
-            価値あるモノを未来へ繋ぎ、<br>新たな生き方を創造する
+        <h1>
+            価値あるモノを未来へ繋ぎ、<br>
+            新たな生き方を創造する
         </h1>
     </div>
 </div>
 
-<section id="philosophy">
-    <div class="container" data-aos="fade-up">
-        <span class="label">Philosophy</span>
-        <div class="concept-wrap">
-            <div class="concept-text">
-                「結縁地（ユウエンチ）」は、<br>
-                良い品と人、そして新しい働き方を目指す<br>
-                人々との「縁」を結ぶ場所。
-            </div>
-        </div>
-    </div>
-</section>
+<div class="spacer"></div>
 
-<section id="business" style="background-color: var(--bg-sub);">
-    <div class="container">
-        <span class="label">Business</span>
-        
-        <div class="row" data-aos="fade-up">
-            <div class="col-img">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1000" alt=""></div>
-            </div>
-            <div class="col-text">
-                <h3>Brand Resale</h3>
-                <p>確かな鑑定眼と熟練のリペア技術。ブランド品本来の輝きを取り戻し、次世代へとその価値を繋いでいくサステナブルな循環を創造します。</p>
-            </div>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-            <div class="col-img">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1566241440091-ec10de8db2e1?q=80&w=1000" alt=""></div>
-            </div>
-            <div class="col-text">
-                <h3>Global EC</h3>
-                <p>Shopeeをはじめとするグローバルプラットフォームを通じ、日本の優れた製品を世界へ。国境を越えた「縁」を構築し、価値を最大化します。</p>
-            </div>
-        </div>
-
-        <div class="row" data-aos="fade-up">
-            <div class="col-img">
-                <div class="img-container"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000" alt=""></div>
-            </div>
-            <div class="col-text">
-                <h3>LunaFlow</h3>
-                <p>自立を目指す女性のための物販スクール。最新のITツール活用と伴走型サポートにより、場所や時間に縛られない自由な働き方を支援します。</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="company">
-    <div class="container" data-aos="fade-up">
-        <span class="label">Company</span>
-        <div class="company-table">
-            <div class="table-row">
-                <div class="table-label">商号</div>
-                <div class="table-data">合同会社結縁地（ユウエンチ）</div>
-            </div>
-            <div class="table-row">
-                <div class="table-label">英語表記</div>
-                <div class="table-data">Yuenchi LLC</div>
-            </div>
-            <div class="table-row">
-                <div class="table-label">事業内容</div>
-                <div class="table-data">ブランド品リセール・リペア事業、越境EC事業、物販教育事業</div>
-            </div>
-            <div class="table-row">
-                <div class="table-label">古物商許可</div>
-                <div class="table-data">（ここに番号を記載）</div>
-            </div>
-            <div class="table-row">
-                <div class="table-label">所在地</div>
-                <div class="table-data">（ここに住所を記載）</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="footer-logo" data-aos="fade">YUENCHI LLC</div>
-    <div class="copyright">© 2026 Yuenchi LLC. All rights reserved.</div>
-</footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({
-        once: true,
-        duration: 2000,
-        easing: 'ease-out'
-    });
-</script>
 </body>
 </html>
