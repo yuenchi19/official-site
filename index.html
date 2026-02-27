@@ -150,3 +150,91 @@
 
 </body>
 </html>
+の直後に貼り付けてください 
+-->
+<div class="main-content">
+    <section id="business-fields">
+        <div class="section-header" data-aos="fade-up">
+            <span class="label">OUR BUSINESS</span>
+            <h2>3つの事業領域</h2>
+            <p>リセール・越境EC・物販スクールの3軸で、<br>価値ある「ご縁」を生み出し続けます。</p>
+        </div>
+
+        <div class="card-container">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-img">
+                    <img src="service1.jpg" alt="リセール事業"> </div>
+                <div class="card-body bg-green">
+                    <span class="card-label">RESALE BUSINESS</span>
+                    <h3>ハイブランドリセール</h3>
+                    <p>ルイ・ヴィトン、グッチ、シャネルなど国内外の一流ブランド品を、確かな鑑定眼で仕入れ・販売。リペア技術で価値を蘇らせます。</p>
+                    <div class="tags">
+                        <span>財布・バッグ</span><span>アパレル</span><span>メルカリ</span>
+                    </div>
+                    <a href="#" class="btn-more">詳しく見る →</a>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img">
+                    <img src="service2.jpg" alt="越境EC"> </div>
+                <div class="card-body bg-beige">
+                    <span class="card-label">CROSS-BORDER EC</span>
+                    <h3>越境EC事業</h3>
+                    <p>日本のおもちゃ・ホビー・伝統工芸品など、海外で人気の高い日本製品を世界へ届けます。独自のルートでグローバル市場へ展開します。</p>
+                    <div class="tags">
+                        <span>日本のおもちゃ</span><span>ホビー</span><span>海外販売</span>
+                    </div>
+                    <a href="#" class="btn-more">詳しく見る →</a>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img">
+                    <img src="service3.jpg" alt="スクール"> </div>
+                <div class="card-body bg-white">
+                    <span class="card-label">SCHOOL</span>
+                    <h3>物販スクール LunaFlow</h3>
+                    <p>受講生と共に成長するサブスクリプション型の伴走スクール。自立した物販ビジネスの構築を、専用チャットとコミュニティでサポートします。</p>
+                    <div class="tags">
+                        <span>サブスク型</span><span>伴走サポート</span><span>コミュニティ</span>
+                    </div>
+                    <a href="#" class="btn-more">スクールを見る →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    /* 追加分のスタイル */
+    .main-content { position: relative; z-index: 20; background: #fff; margin-top: 100vh; }
+    #business-fields { padding: 120px 5%; background: #fff; }
+    
+    .section-header { text-align: center; margin-bottom: 80px; }
+    .section-header .label { color: #2e7d32; font-size: 0.7rem; letter-spacing: 0.4em; display: block; margin-bottom: 20px; font-weight: bold; }
+    .section-header h2 { font-family: 'Noto Serif JP', serif; font-size: 2.8rem; margin-bottom: 25px; }
+    .section-header p { color: #666; line-height: 2; font-weight: 300; }
+
+    .card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+    
+    .card { border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); transition: 0.4s; }
+    .card:hover { transform: translateY(-10px); }
+    .card-img { width: 100%; height: 240px; background: #eee; overflow: hidden; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .card-body { padding: 40px 30px; min-height: 380px; display: flex; flex-direction: column; }
+    .bg-green { background: #2e7d32; color: #fff; }
+    .bg-beige { background: #f1ede4; color: #333; }
+    .bg-white { background: #ffffff; color: #333; border: 1px solid #eee; }
+
+    .card-label { font-size: 0.65rem; letter-spacing: 0.2em; margin-bottom: 15px; display: block; opacity: 0.8; font-weight: bold; }
+    .card h3 { font-family: 'Noto Serif JP', serif; font-size: 1.6rem; margin-bottom: 20px; }
+    .card p { font-size: 0.9rem; line-height: 1.8; margin-bottom: 25px; font-weight: 300; flex-grow: 1; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+    .tags span { font-size: 0.7rem; padding: 6px 14px; border-radius: 20px; background: rgba(0,0,0,0.05); }
+    .bg-green .tags span { background: rgba(255,255,255,0.15); }
+
+    .btn-more { text-decoration: none; color: inherit; font-weight: bold; font-size: 0.9rem; border-bottom: 1px solid; align-self: flex-start; padding-bottom: 4px; }
+</style>
