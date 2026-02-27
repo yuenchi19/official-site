@@ -3,180 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>合同会社結縁地 | Yuenchi LLC - ブランドリセール・越境EC・物販スクール</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <title>合同会社結縁地 | Yuenchi LLC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #c0392b;
-            --bg-light: #f8f9fa;
-            --text-main: #333;
+            --primary: #1a1a1a;
+            --accent: #8e7d4b; /* 上品なゴールド系 */
+            --bg: #ffffff;
+            --light-gray: #f9f9f9;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            line-height: 1.6;
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
+            color: var(--primary);
+            line-height: 1.8;
+            overflow-x: hidden;
         }
+
+        h1, h2, .logo { font-family: 'Noto Serif JP', serif; }
+
+        /* ヘッダー */
         header {
-            background: #fff;
+            position: fixed;
+            width: 100%;
             padding: 20px 5%;
+            background: rgba(255,255,255,0.95);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        .logo span {
-            font-size: 0.9rem;
-            display: block;
-            font-weight: normal;
-        }
-        nav a {
-            text-decoration: none;
-            color: var(--text-main);
-            margin-left: 20px;
-            font-size: 0.9rem;
-        }
+        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 0.1em; }
+        .logo span { display: block; font-size: 0.7rem; font-family: 'Noto Sans JP'; font-weight: 300; }
+
+        /* ヒーローエリア */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1350&q=80') no-repeat center/cover;
-            height: 60vh;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            color: #fff;
+            justify-content: center;
             text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: #fff;
             padding: 0 20px;
         }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .hero p { font-size: 1.2rem; max-width: 700px; }
+        .hero-content h1 {
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            letter-spacing: 0.15em;
+            line-height: 1.4;
+        }
+        .hero-content p { font-size: 1.1rem; letter-spacing: 0.2em; font-weight: 300; }
 
-        section { padding: 80px 10%; }
+        /* セクション共通 */
+        section { padding: 100px 10%; }
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
-        .section-title h2 {
-            font-size: 2rem;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-            display: inline-block;
+        .section-title span { color: var(--accent); font-size: 0.9rem; letter-spacing: 0.3em; text-transform: uppercase; }
+        .section-title h2 { font-size: 2rem; margin-top: 10px; position: relative; padding-bottom: 15px; }
+        .section-title h2::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 1px; background: var(--accent);
         }
 
-        .services {
+        /* サービスカード */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
         .service-card {
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s;
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 2px;
+            transition: all 0.4s ease;
         }
-        .service-card:hover { transform: translateY(-5px); }
-        .service-card h3 { color: var(--primary-color); }
+        .service-card:hover { background: #fff; shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .service-card h3 { font-family: 'Noto Serif JP'; margin-bottom: 20px; color: var(--accent); }
 
-        .company-info {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            border-collapse: collapse;
-            width: 100%;
+        /* 会社概要テーブル */
+        .company-table {
+            width: 100%; max-width: 800px; margin: 0 auto;
+            border-top: 1px solid #eee;
         }
-        .company-info td, .company-info th {
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-        .company-info th { width: 30%; text-align: left; background: #eee; }
+        .company-table tr { border-bottom: 1px solid #eee; }
+        .company-table th, .company-table td { padding: 25px 15px; text-align: left; }
+        .company-table th { width: 30%; font-weight: 500; color: #666; font-size: 0.9rem; }
 
-        footer {
-            background: var(--primary-color);
-            color: #fff;
-            padding: 40px 10%;
-            text-align: center;
-        }
-        .footer-disclaimer { font-size: 0.8rem; margin-top: 20px; opacity: 0.8; }
-        
+        footer { background: var(--primary); color: #fff; padding: 60px 10%; text-align: center; font-size: 0.8rem; }
+        .footer-logo { font-family: 'Noto Serif JP'; font-size: 1.2rem; margin-bottom: 20px; display: block; }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            header { flex-direction: column; }
-            nav { margin-top: 10px; }
+            section { padding: 60px 5%; }
+            .hero-content h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">合同会社結縁地<span>Yuenchi LLC</span></div>
-    <nav>
-        <a href="#about">理念</a>
-        <a href="#services">事業内容</a>
-        <a href="#company">会社概要</a>
-    </nav>
+    <div class="logo">合同会社結縁地<span>YUENCHI LLC</span></div>
 </header>
 
-<div class="hero">
-    <h1>価値あるモノを未来へ繋ぎ、<br>新たな生き方を創造する</h1>
-    <p>「縁を結ぶ場所」として、誠実なビジネスで社会に貢献します。</p>
-</div>
-
-<section id="about">
-    <div class="section-title">
-        <h2>理念</h2>
-    </div>
-    <p style="max-width: 800px; margin: 0 auto; text-align: center;">
-        社名である「結縁地（ユウエンチ）」には、良い品と人、そして新しい働き方を目指す人々との「縁」を結ぶ場所でありたいという想いが込められています。私たちは一過性の利益ではなく、持続可能な循環と共生を目指します。
-    </p>
-</section>
-
-<section id="services" style="background-color: #fff;">
-    <div class="section-title">
-        <h2>事業内容</h2>
-    </div>
-    <div class="services">
-        <div class="service-card">
-            <h3>ブランドリセール事業</h3>
-            <p>確かな鑑定眼と熟練のリペア技術により、ブランド品本来の輝きを取り戻します。サステナブルな社会の実現に向け、価値の再定義を行います。</p>
+<main>
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <h1>価値あるモノを未来へ繋ぎ、<br>新たな生き方を創造する</h1>
+            <p>Connection & Creation</p>
         </div>
-        <div class="service-card">
-            <h3>越境EC事業</h3>
-            <p>Shopeeなどのプラットフォームを活用し、日本の優れた製品を世界中のファンへ届けます。国境を越えた「縁」を構築します。</p>
-        </div>
-        <div class="service-card">
-            <h3>物販スクール LunaFlow</h3>
-            <p>女性の自立と挑戦を支援する伴走型コミュニティ。再現性の高いノウハウと最新のITツール活用で、自分らしい働き方の実現をサポートします。</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="company">
-    <div class="section-title">
-        <h2>会社概要</h2>
-    </div>
-    <table class="company-info">
-        <tr><th>社名</th><td>合同会社結縁地（ユウエンチ）</td></tr>
-        <tr><th>英語表記</th><td>Yuenchi LLC</td></tr>
-        <tr><th>事業内容</th><td>ブランド品のリセール・リペア、越境EC運営、物販スクール「LunaFlow」の運営</td></tr>
-        <tr><th>古物商許可</th><td>（※ここに許可番号を記載してください）</td></tr>
-        <tr><th>所在地</th><td>（※所在地を記載してください）</td></tr>
-    </table>
-</section>
+    <section id="about">
+        <div class="section-title" data-aos="fade-up">
+            <span>Philosophy</span>
+            <h2>理念</h2>
+        </div>
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;" data-aos="fade-up" data-aos-delay="200">
+            <p>「結縁地（ユウエンチ）」という名には、良い品と人、そして新しい働き方を目指す人々との「縁」を結ぶ場所でありたいという想いが込められています。<br>私たちは誠実なビジネスを通じて、持続可能な循環と共生を目指します。</p>
+        </div>
+    </section>
+
+    <section id="services" style="background: var(--light-gray);">
+        <div class="section-title" data-aos="fade-up">
+            <span>Business</span>
+            <h2>事業内容</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>ブランドリセール事業</h3>
+                <p>確かな鑑定眼と熟練のリペア技術により、ブランド品本来の輝きを取り戻します。サステナブルな社会の実現に向け、価値の再定義を行います。</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>越境EC事業</h3>
+                <p>Shopeeなどのプラットフォームを活用し、日本の優れた製品を世界へ。国境を越えた「縁」を構築し、価値を最大化します。</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>物販スクール LunaFlow</h3>
+                <p>女性の自立を支援する伴走型コミュニティ。再現性の高いノウハウとIT活用で、自分らしい働き方の実現をサポートします。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="company">
+        <div class="section-title" data-aos="fade-up">
+            <span>Company</span>
+            <h2>会社概要</h2>
+        </div>
+        <table class="company-table" data-aos="fade-up">
+            <tr><th>社名</th><td>合同会社結縁地（ユウエンチ）</td></tr>
+            <tr><th>英語表記</th><td>Yuenchi LLC</td></tr>
+            <tr><th>所在地</th><td>（※ご住所を入力してください）</td></tr>
+            <tr><th>古物商許可</th><td>（※許可番号を入力してください）</td></tr>
+        </table>
+    </section>
+</main>
 
 <footer>
-    <p>&copy; 2026 Yuenchi LLC. All Rights Reserved.</p>
-    <p class="footer-disclaimer">古物商許可証：第XXXXXXXXXXXX号 [※要修正]</p>
+    <span class="footer-logo">YUENCHI LLC</span>
+    <p>&copy; 2026 Yuenchi LLC. All rights reserved.</p>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        once: true, // アニメーションを一度だけ実行
+        duration: 1000,
+        easing: 'ease-out-quart'
+    });
+</script>
 </body>
 </html>
