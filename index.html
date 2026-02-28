@@ -23,8 +23,19 @@
             overflow-x: hidden;
             line-height: 1.8;
         }
+        /* --- ヘッダー（復元＆更新版） --- */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 20px 4%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; /* ★これが「一番手前に出す」という魔法の指示です */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+            transition: background 0.3s;
+        }
+        .logo-group { display: flex; align-items: center; gap: 12px; }
+        .logo-mark { width: 35px; height: 35px; background: var(--accent-green); border-radius: 6px; }
+        .logo-text { font-family: var(--font-serif); font-size: 1.1rem; letter-spacing: 0.1em; color: #fff; text-decoration: none; }
+        .logo-text span { display: block; font-size: 0.6rem; font-family: 'Noto Sans JP'; font-weight: 100; }
 
-        /* --- ヘッダー（更新版） --- */
         nav ul { display: flex; list-style: none; gap: 25px; align-items: center; }
         nav a { 
             text-decoration: none; 
