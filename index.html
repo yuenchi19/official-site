@@ -90,15 +90,94 @@
         .card p { font-size: 0.9rem; margin-bottom: 20px; flex-grow: 1; }
         .btn-more { text-decoration: none; color: inherit; font-weight: bold; font-size: 0.8rem; border-bottom: 1px solid; align-self: flex-start; }
 
-        /* 詳細解説セクション */
-        .detail-row { padding: 100px 5%; border-top: 1px solid #f0f0f0; }
-        .detail-container { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 60px; }
-        .detail-container.reverse { flex-direction: row-reverse; }
-        .detail-text { flex: 1; }
-        .detail-text h3 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 20px; }
-        .detail-image { flex: 1; }
-        .image-wrapper { width: 100%; aspect-ratio: 4/3; background: #eee; border-radius: 12px; overflow: hidden; }
-        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        /* =========================================
+           確かな信頼と品質セクション（完全再現デザイン）
+           ========================================= */
+        .trust-section {
+            background-color: #355e3b; /* 画像の深いグリーン */
+            color: #ffffff;
+            padding: 120px 5%;
+        }
+        .trust-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .trust-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .trust-label svg {
+            width: 14px;
+            height: 14px;
+        }
+        .trust-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            letter-spacing: 0.05em;
+        }
+        .trust-header p {
+            font-size: 0.95rem;
+            line-height: 2;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .trust-card {
+            background-color: rgba(255, 255, 255, 0.1); /* 半透明のカード背景 */
+            border-radius: 20px;
+            padding: 50px 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .trust-card:hover {
+            transform: translateY(-10px);
+        }
+        .trust-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .trust-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #ffffff;
+        }
+        .trust-card h3 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 0.05em;
+        }
+        .trust-card .sub {
+            font-size: 0.65rem;
+            opacity: 0.7;
+            display: block;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+        }
+        .trust-card .desc {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
 
         /* 会社概要セクション */
         #company-profile { padding: 120px 5%; background: #fff; }
@@ -110,8 +189,8 @@
         /* フッター */
         footer { background: #1a1a1a; color: #fff; padding: 60px 5%; text-align: center; }
 
-        @media (max-width: 768px) {
-            .detail-container, .detail-container.reverse { flex-direction: column; gap: 30px; }
+        @media (max-width: 900px) {
+            .trust-header h2 { font-size: 2rem; }
             .info-row { flex-direction: column; }
             .info-row dt { margin-bottom: 5px; }
             nav ul { display: none; }
@@ -158,7 +237,6 @@
                 <div class="card-body bg-green">
                     <h3>ハイブランドリセール</h3>
                     <p>確かな鑑定眼で仕入れ。リペア技術で価値を蘇らせ、次の持ち主へ繋ぎます。</p>
-                    <a href="#detail-01" class="btn-more">詳しく見る →</a>
                 </div>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
@@ -166,7 +244,6 @@
                 <div class="card-body bg-beige">
                     <h3>越境EC事業</h3>
                     <p>日本のおもちゃや伝統工芸品を、世界中のファンへ直接届けます。</p>
-                    <a href="#detail-02" class="btn-more">詳しく見る →</a>
                 </div>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="300">
@@ -174,31 +251,70 @@
                 <div class="card-body bg-white">
                     <h3>物販スクール</h3>
                     <p>女性の自立を支援する伴走型スクール「LunaFlow」を運営しています。</p>
-                    <a href="#detail-03" class="btn-more">詳しく見る →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="detail-row" id="detail-01">
-        <div class="detail-container">
-            <div class="detail-text" data-aos="fade-right">
-                <h3>Brand Resale</h3>
-                <p>ブランド品の価値を再定義し、サステナブルな循環を。自社工房でのリペアにこだわり、最高級の状態でお届けします。</p>
-            </div>
-            <div class="detail-image" data-aos="zoom-in"><div class="image-wrapper"><img src="detail1.jpg" alt=""></div></div>
+    <section class="trust-section">
+        <div class="trust-header" data-aos="fade-up">
+            <span class="trust-label">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                TRUST & QUALITY
+            </span>
+            <h2>確かな信頼と品質</h2>
+            <p>専門性・技術力・法令遵守の3つの柱で、<br>お客様・取引先・社会からの信頼を築いています。</p>
         </div>
-    </div>
 
-    <div class="detail-row" id="detail-02" style="background-color: var(--bg-beige);">
-        <div class="detail-container reverse">
-            <div class="detail-text" data-aos="fade-left">
-                <h3>Global Commerce</h3>
-                <p>「日本の良きもの」を世界へ。言語や物流の壁を越え、グローバルな市場へと価値を繋ぎます。</p>
+        <div class="trust-grid">
+            <div class="trust-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="trust-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                    </svg>
+                </div>
+                <h3>古物商許可取得</h3>
+                <span class="sub">法令遵守の正規運営</span>
+                <p class="desc">法人として古物商許可を取得。正規ルートでの仕入れ・販売を徹底し、安心・安全な取引を実現しています。</p>
             </div>
-            <div class="detail-image" data-aos="zoom-in"><div class="image-wrapper"><img src="detail2.jpg" alt=""></div></div>
+
+            <div class="trust-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="trust-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 7.5l1.5 1.5 3-3" />
+                    </svg>
+                </div>
+                <h3>確かな目利き</h3>
+                <span class="sub">徹底した検品体制</span>
+                <p class="desc">豊富な経験と専門知識による鑑定スキルで、本物だけを厳選。偽物・粗悪品は一切取り扱いません。</p>
+            </div>
+
+            <div class="trust-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="trust-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.83-5.83M15.17 11.42L21 5.59A2.652 2.652 0 0017.25 1.83l-5.83 5.83M1.83 17.25l5.83-5.83m0 0l-5.83-5.83m5.83 5.83l5.83 5.83" />
+                    </svg>
+                </div>
+                <h3>職人のリペア技術</h3>
+                <span class="sub">価値を蘇らせる技術力</span>
+                <p class="desc">単なる転売ではなく、熟練の技術でブランド品を修復・再生。サステナブルな循環型ビジネスに貢献します。</p>
+            </div>
+
+            <div class="trust-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="trust-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+                    </svg>
+                </div>
+                <h3>合同会社として運営</h3>
+                <span class="sub">法人格の責任と信頼</span>
+                <p class="desc">個人事業ではなく合同会社として責任ある運営を行い、銀行・取引先・お客様に対して誠実に向き合います。</p>
+            </div>
         </div>
-    </div>
+    </section>
 
     <section id="company-profile">
         <div class="section-header" data-aos="fade-up">
