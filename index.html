@@ -40,7 +40,7 @@
         nav a { text-decoration: none; color: #fff; font-size: 0.85rem; font-weight: 300; }
         .nav-contact { background: var(--accent-green); padding: 10px 22px; border-radius: 4px; font-weight: 500; }
 
-        /* --- 扉・店内演出エリア（固定エリア） --- */
+        /* --- 扉・店内演出エリア --- */
         .stage {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             z-index: 5;
@@ -70,29 +70,29 @@
             border: 1px solid rgba(255,255,255,0.5); transition: 0.3s;
         }
         .btn-primary { background: var(--accent-green); border: none; }
-        .btn-primary:hover { background: #246a2a; }
 
         .scroll-hint {
             position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
             z-index: 15; font-size: 0.65rem; letter-spacing: 0.4em; text-align: center;
         }
 
-        /* --- メインコンテンツ（スクロールで上がってくる） --- */
+        /* --- メインコンテンツ --- */
         .main-content {
             position: relative;
             z-index: 20;
             background: #fff;
-            margin-top: 200vh; /* 演出分の余白 */
+            margin-top: 200vh;
             color: var(--text-dark);
         }
 
-        /* 3つのカードセクション */
-        #business-fields { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
+        /* セクション共通 */
         .section-header { text-align: center; margin-bottom: 80px; }
         .section-header .label { color: var(--accent-green); font-size: 0.7rem; letter-spacing: 0.4em; display: block; margin-bottom: 20px; font-weight: bold; }
         .section-header h2 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 25px; color: var(--text-dark); }
         .section-header p { color: #666; font-weight: 300; }
 
+        /* 事業領域カード */
+        #business-fields { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
         .card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .card { border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.05); transition: 0.4s; }
         .card:hover { transform: translateY(-10px); }
@@ -109,7 +109,7 @@
         .bg-green .tags span { background: rgba(255,255,255,0.15); }
         .btn-more { text-decoration: none; color: inherit; font-weight: bold; font-size: 0.85rem; border-bottom: 1px solid; align-self: flex-start; padding-bottom: 4px; }
 
-        /* 詳細解説セクション */
+        /* 詳細解説 */
         .detail-row { padding: 120px 5%; border-top: 1px solid #f0f0f0; }
         .detail-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 60px; }
         .detail-container.reverse { flex-direction: row-reverse; }
@@ -118,17 +118,27 @@
         .detail-text h3 { font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 20px; }
         .detail-lead { font-size: 1.1rem; margin-bottom: 25px; color: #333; font-weight: 500; }
         .detail-description { font-size: 0.95rem; color: #666; line-height: 2; margin-bottom: 30px; }
-        .detail-features { list-style: none; margin-bottom: 30px; }
-        .detail-features li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.9rem; }
+        .detail-features { list-style: none; margin-bottom: 30px; padding: 0; }
+        .detail-features li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.9rem; color: #444; }
         .detail-features li::before { content: ''; position: absolute; left: 0; top: 12px; width: 15px; height: 1px; background: var(--accent-green); }
         .detail-image { flex: 1; }
         .image-wrapper { width: 100%; aspect-ratio: 4/3; background: #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
+        /* 会社概要 */
+        .profile-table { border-top: 1px solid #eee; margin-top: 40px; }
+        .info-row { display: flex; padding: 30px 0; border-bottom: 1px solid #eee; align-items: flex-start; }
+        .info-row dt { width: 150px; font-weight: 600; color: var(--accent-green); font-size: 0.9rem; flex-shrink: 0; }
+        .info-row dd { flex-grow: 1; font-size: 0.95rem; color: #444; line-height: 2; font-weight: 300; }
+
+        /* フッター */
+        footer { background: #1a1a1a; color: rgba(255,255,255,0.6); padding: 60px 5%; text-align: center; }
+
         @media (max-width: 900px) {
             .detail-container, .detail-container.reverse { flex-direction: column; gap: 40px; }
+            .info-row { flex-direction: column; padding: 20px 0; }
+            .info-row dt { margin-bottom: 10px; }
             nav ul { display: none; }
-            .hero-main h1 { font-size: 1.8rem; }
             .main-content { margin-top: 150vh; }
         }
     </style>
@@ -144,7 +154,7 @@
         <ul>
             <li><a href="#">ホーム</a></li>
             <li><a href="#business-fields">事業内容</a></li>
-            <li><a href="#">会社概要</a></li>
+            <li><a href="#company-profile">会社概要</a></li>
             <li><a href="#" class="nav-contact">お問い合わせ</a></li>
         </ul>
     </nav>
@@ -174,37 +184,37 @@
         <div class="section-header" data-aos="fade-up">
             <span class="label">OUR BUSINESS</span>
             <h2>3つの事業領域</h2>
-            <p>確かな鑑定眼、グローバルな視点、そして共に歩む教育。<br>私たちは「結び目」として価値を提供します。</p>
+            <p>リセール・越境EC・物販スクールの3軸で、<br>価値ある「ご縁」を生み出し続けます。</p>
         </div>
 
         <div class="card-container">
             <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-img"><img src="service1.jpg" alt="リセール"></div>
+                <div class="card-img"><img src="service1.jpg" alt=""></div>
                 <div class="card-body bg-green">
                     <span style="font-size:0.6rem; display:block; margin-bottom:10px; font-weight:bold;">RESALE</span>
                     <h3>ハイブランドリセール</h3>
-                    <p>ルイ・ヴィトン等のブランド品を鑑定・リペアし、価値を最大限に高めて次の方へ繋ぎます。</p>
+                    <p>確かな鑑定眼で仕入れ・販売。リペア技術でブランド本来の価値を蘇らせます。</p>
                     <div class="tags"><span>鑑定</span><span>リペア</span><span>リセール</span></div>
                     <a href="#detail-01" class="btn-more">詳しく見る →</a>
                 </div>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-img"><img src="service2.jpg" alt="越境EC"></div>
+                <div class="card-img"><img src="service2.jpg" alt=""></div>
                 <div class="card-body bg-beige">
                     <span style="font-size:0.6rem; display:block; margin-bottom:10px; font-weight:bold;">CROSS-BORDER EC</span>
                     <h3>越境EC事業</h3>
-                    <p>日本が誇るおもちゃや伝統工芸を、独自のルートで世界中のコレクターへ届けます。</p>
-                    <div class="tags"><span>世界へ</span><span>ホビー</span><span>伝統</span></div>
+                    <p>日本のおもちゃや伝統工芸品を、独自のルートで世界中のファンへ直接届けます。</p>
+                    <div class="tags"><span>世界へ</span><span>ホビー</span><span>伝統工芸</span></div>
                     <a href="#detail-02" class="btn-more">詳しく見る →</a>
                 </div>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-img"><img src="service3.jpg" alt="スクール"></div>
+                <div class="card-img"><img src="service3.jpg" alt=""></div>
                 <div class="card-body bg-white">
                     <span style="font-size:0.6rem; display:block; margin-bottom:10px; font-weight:bold;">SCHOOL</span>
                     <h3>物販スクール LunaFlow</h3>
-                    <p>女性の自立を支援。サブスク型で「一生モノのスキル」を身につける伴走型スクールです。</p>
-                    <div class="tags"><span>自立</span><span>伴走</span><span>サブスク型</span></div>
+                    <p>女性の自立を支援する伴走型スクール。一生モノのスキル構築をサポートします。</p>
+                    <div class="tags"><span>自立支援</span><span>伴走型</span><span>サブスク</span></div>
                     <a href="#detail-03" class="btn-more">詳しく見る →</a>
                 </div>
             </div>
@@ -217,10 +227,10 @@
                 <span class="detail-num">01</span>
                 <h3>Brand Resale</h3>
                 <p class="detail-lead">想いを受け継ぎ、価値を繋ぐ。</p>
-                <p class="detail-description">確かな鑑定眼で選び抜いた逸品を、リペアで本来の美しさを取り戻し、次の持ち主へと「縁」を結びます。</p>
+                <p class="detail-description">私たちは、確かな鑑定眼で選び抜いた逸品を、熟練の技術でメンテナンス。次の持ち主へと「縁」を結びます。</p>
                 <ul class="detail-features">
                     <li>真贋鑑定の徹底</li>
-                    <li>自社工房でのメンテナンス</li>
+                    <li>自社工房でのリペア・清掃</li>
                 </ul>
             </div>
             <div class="detail-image" data-aos="zoom-in"><div class="image-wrapper"><img src="detail1.jpg" alt=""></div></div>
@@ -233,9 +243,9 @@
                 <span class="detail-num">02</span>
                 <h3>Global Commerce</h3>
                 <p class="detail-lead">日本の「良きもの」を世界へ。</p>
-                <p class="detail-description">日本が誇るホビーや文化を、グローバルプラットフォームを通じて世界中へ直接届けます。</p>
+                <p class="detail-description">日本が世界に誇るホビーや伝統工芸品を、グローバルプラットフォームを通じて直接世界へ届けます。</p>
                 <ul class="detail-features">
-                    <li>東南アジアへの多角展開</li>
+                    <li>東南アジア・台湾への展開</li>
                     <li>安心の国際物流ネットワーク</li>
                 </ul>
             </div>
@@ -243,9 +253,46 @@
         </div>
     </div>
 
-    <div id="add-next-here"></div>
+    <div class="detail-row" id="detail-03">
+        <div class="detail-container">
+            <div class="detail-text" data-aos="fade-right">
+                <span class="detail-num">03</span>
+                <h3>School "LunaFlow"</h3>
+                <p class="detail-lead">自分らしく、しなやかに生きる。</p>
+                <p class="detail-description">LunaFlowは、女性の挑戦を支援するスクールです。一人ひとりに合わせたビジネス構築を共に目指します。</p>
+                <ul class="detail-features">
+                    <li>初心者向けカリキュラム</li>
+                    <li>専属講師による伴走サポート</li>
+                </ul>
+            </div>
+            <div class="detail-image" data-aos="zoom-in"><div class="image-wrapper"><img src="detail3.jpg" alt=""></div></div>
+        </div>
+    </div>
+
+    <section id="company-profile" style="background: #fff; padding: 120px 5%;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div class="section-header" data-aos="fade-up">
+                <span class="label">COMPANY PROFILE</span>
+                <h2>会社概要</h2>
+            </div>
+            <div class="profile-table" data-aos="fade-up">
+                <dl class="info-row"><dt>名称</dt><dd>合同会社結縁地（Yuenchi LLC）</dd></dl>
+                <dl class="info-row"><dt>代表者</dt><dd>山口 栞</dd></dl>
+                <dl class="info-row"><dt>所在地</dt><dd>〒344-0067 埼玉県春日部市中央1丁目44番地7 ニュートーキョービル201</dd></dl>
+                <dl class="info-row"><dt>設立</dt><dd>2024年4月11日</dd></dl>
+                <dl class="info-row"><dt>許認可</dt><dd>埼玉県公安委員会 古物商許可 第431260064030号</dd></dl>
+            </div>
+        </div>
+    </section>
+
+    <div id="next-content"></div>
 
 </div>
+
+<footer>
+    <div style="margin-bottom: 20px; color:#fff; font-family: var(--font-serif);">結縁地 Yuenchi LLC</div>
+    <p style="font-size: 0.7rem;">&copy; 2024 Yuenchi LLC All Rights Reserved.</p>
+</footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -256,7 +303,6 @@
         const door = document.getElementById('door');
         const content = document.getElementById('hero-content');
         
-        // 扉のズームとフェードアウト
         const zoomRate = 1 + (scrolled / 500);
         const opacityRate = 1 - (scrolled / 400);
         
@@ -267,7 +313,6 @@
             content.classList.remove('active');
         } else {
             door.style.opacity = 0;
-            // 店内文字のフェードイン
             const contentOpacity = Math.min((scrolled - 500) / 400, 1);
             content.style.opacity = contentOpacity;
             content.style.transform = `translate(-50%, ${-50 - (10 * (1 - contentOpacity))}%)`;
