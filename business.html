@@ -272,7 +272,78 @@
             line-height: 1.8;
             color: #666;
         }
+/* =========================================
+           販売チャネル（深い緑色のエリア）
+           ========================================= */
+        .sales-channel-wrapper {
+            background-color: #2b4c2b; /* 画像に近い深い緑色 */
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin-top: 60px; /* 上のカードとの隙間 */
+            color: #fff;
+        }
 
+        .sales-channel-title {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 35px;
+            letter-spacing: 0.1em;
+        }
+
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .channel-card {
+            background-color: rgba(255, 255, 255, 0.1); /* 半透明の白背景 */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .channel-card:hover {
+            background-color: rgba(255, 255, 255, 0.15); /* マウスを乗せたら少し明るく */
+        }
+
+        .channel-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .channel-icon svg {
+            width: 24px;
+            height: 24px;
+            color: #fff;
+        }
+
+        .channel-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .channel-text h4 {
+            font-size: 1.05rem;
+            margin-bottom: 3px;
+        }
+
+        .channel-text p {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin: 0;
+        }
         /* スマホ画面用に並び方を変更 */
         @media (max-width: 1024px) {
             .biz-detail-header { flex-direction: column; gap: 30px; }
