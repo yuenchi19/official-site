@@ -317,22 +317,91 @@
             </div>
         </div>
     </section>
-<section class="origin-section" style="background-color: var(--bg-beige); padding: 120px 5%; text-align: center;">
-        <div style="max-width: 800px; margin: 0 auto;" data-aos="fade-up">
-            <span style="color: var(--accent-green); font-size: 0.75rem; letter-spacing: 0.3em; font-weight: bold; display: block; margin-bottom: 20px;">
-                ORIGIN OF NAME
+<style>
+    /* 名前の由来セクション専用のデザイン */
+    .philosophy-section { background-color: var(--bg-beige); padding: 100px 5%; overflow: hidden; }
+    .philosophy-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 60px; }
+    .philosophy-text { flex: 1; }
+    
+    .philosophy-label { color: var(--accent-green); font-size: 0.75rem; letter-spacing: 0.15em; font-weight: bold; display: flex; align-items: center; gap: 5px; margin-bottom: 20px; }
+    .philosophy-label svg { width: 14px; height: 14px; }
+    
+    .philosophy-text h2 { font-family: var(--font-serif); font-size: 3rem; color: var(--text-dark); line-height: 1.3; margin-bottom: 30px; letter-spacing: 0.05em; }
+    .philosophy-text p { font-size: 0.95rem; line-height: 2; color: #555; margin-bottom: 20px; }
+    .philosophy-text p strong { color: var(--text-dark); font-weight: 600; }
+    
+    .philosophy-tags { display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+    .philosophy-tags .tag { background: #fff; color: #444; padding: 10px 20px; border-radius: 8px; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); font-weight: 500; }
+    .philosophy-tags .tag svg { width: 16px; height: 16px; color: var(--accent-green); }
+    
+    .btn-company { display: inline-flex; align-items: center; gap: 10px; background-color: #2b4c2b; color: #fff; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: background 0.3s; }
+    .btn-company:hover { background-color: #1e361e; }
+    
+    .philosophy-image { flex: 1; position: relative; }
+    .philosophy-image img { width: 100%; border-radius: 20px; display: block; }
+    
+    .floating-card { position: absolute; bottom: -20px; left: -40px; background: #fff; padding: 20px 25px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 15px; }
+    .icon-box { background: #2b4c2b; color: #fff; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .icon-box svg { width: 20px; height: 20px; }
+    .card-text h4 { font-size: 0.95rem; color: var(--text-dark); margin: 0 0 2px 0; font-family: 'Noto Sans JP', sans-serif;}
+    .card-text span { font-size: 0.75rem; color: #888; }
+
+    @media (max-width: 900px) {
+        .philosophy-container { flex-direction: column; gap: 40px; }
+        .philosophy-text h2 { font-size: 2.2rem; }
+        .floating-card { left: 10px; bottom: 10px; padding: 15px; }
+    }
+</style>
+
+<section class="philosophy-section" id="philosophy">
+    <div class="philosophy-container" data-aos="fade-up">
+        
+        <div class="philosophy-text">
+            <span class="philosophy-label">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                OUR PHILOSOPHY
             </span>
-            <h2 style="font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 40px; color: var(--text-dark);">
-                「結縁地」に込めた想い
-            </h2>
-            <p style="font-size: 1.05rem; line-height: 2.4; color: #444; font-weight: 300;">
-                「結縁（けちえん）」とは、仏教の言葉で「仏道と縁を結ぶこと」を意味します。<br><br>
-                私たちは、単なる商品の売買にとどまらず、<br>
-                関わるすべての人、そしてモノとの間に、素晴らしい「ご縁」が生まれる場所でありたい。<br><br>
-                そんな想いを込めて、この場所を「結縁地（ゆうえんち）」と名付けました。
-            </p>
+            <h2>「結縁地」という<br>名前の由来</h2>
+            <p><strong>「ご縁を結ぶ場所」</strong> ――それが社名「結縁地（ゆえんち）」に込めた想いです。<br>良い品と人、新しい働き方と女性、売り手と買い手。価値ある出会いを生み出すプラットフォームとして、私たちは事業を展開しています。</p>
+            <p>リセール事業では、ブランド品に新たな命を吹き込み、次の持ち主へとつなぐ。<br>越境ECでは、日本の優れた製品を世界の人々へ届ける。物販スクール「LunaFlow」では、新しい働き方を求める方々の自立を支援する。</p>
+            <p>売り手・買い手・社会の<strong>「三方よし」</strong>を目指し、共生と循環を大切にした企業姿勢で、持続可能なビジネスを追求しています。</p>
+            
+            <div class="philosophy-tags">
+                <span class="tag">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                    共生と循環
+                </span>
+                <span class="tag">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                    三方よし
+                </span>
+                <span class="tag">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                    サステナブル
+                </span>
+            </div>
+            
+            <a href="#company-profile" class="btn-company">
+                会社概要を見る
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px; height:16px;"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
         </div>
-    </section>
+
+        <div class="philosophy-image">
+            <img src="philosophy.jpg" alt="握手をする女性たち">
+            <div class="floating-card">
+                <div class="icon-box">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                </div>
+                <div class="card-text">
+                    <h4>ご縁を結ぶ場所</h4>
+                    <span>合同会社結縁地</span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
     <section id="company-profile">
         <div class="section-header" data-aos="fade-up">
             <span class="label">COMPANY</span>
