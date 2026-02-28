@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事業内容 | 合同会社結縁地 (Yuenchi LLC)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --accent-green: #2b5c2a;
+            --text-dark: #333333;
+            --bg-beige: #f1ede4;
+            --font-serif: 'Noto Serif JP', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           ヘッダー（下層ページ用：白背景）
+           ========================================= */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 15px 4%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000;
+            background-color: #ffffff; /* 白背景 */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* 軽い影 */
+        }
+        .logo-group { display: flex; align-items: center; gap: 12px; }
+        .logo-mark { 
+            width: 38px; height: 38px; background: var(--accent-green); border-radius: 8px; 
+            display: flex; justify-content: center; align-items: center; color: #fff;
+        }
+        .logo-text { display: flex; flex-direction: column; text-decoration: none; }
+        .logo-text .ja { font-size: 1rem; font-weight: bold; color: var(--text-dark); letter-spacing: 0.05em; line-height: 1.2;}
+        .logo-text .en { font-size: 0.65rem; color: #888; letter-spacing: 0.05em; }
+
+        nav ul { display: flex; list-style: none; gap: 30px; align-items: center; }
+        nav a { 
+            text-decoration: none; color: #555; font-size: 0.85rem; font-weight: 500; transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent-green); }
+        
+        /* 現在のページ（事業内容）を緑・太字にする */
+        nav a.active { color: var(--accent-green); font-weight: 700; }
+
+        .nav-contact { background: var(--accent-green); color: #fff; padding: 10px 24px; border-radius: 6px; font-weight: bold; }
+        .nav-contact:hover { opacity: 0.9; color: #fff; }
+
+        /* =========================================
+           ヒーローセクション（私たちの事業）
+           ========================================= */
+        .business-hero {
+            position: relative;
+            width: 100%;
+            height: 80vh; /* 画面の80%の高さ */
+            min-height: 500px;
+            /* 後で画像を差し替える場所 */
+            background: url('business-hero.jpg') center/cover no-repeat #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 70px; /* ヘッダーの高さ分下げる */
+        }
+
+        /* 画像を少し暗くして文字を読みやすくするオーバーレイ */
+        .business-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            max-width: 800px;
+            padding: 0 5%;
+        }
+
+        .hero-label {
+            display: inline-block;
+            border: 1px solid rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 4px 16px;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 25px;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        .hero-content p {
+            font-size: 0.95rem;
+            line-height: 2;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.15);
+            border-radius: 30px;
+            padding: 8px 20px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .badge svg { width: 14px; height: 14px; }
+
+        /* =========================================
+           フッター（共通）
+           ========================================= */
+        /* ※フッターのCSSはトップページと同じものをそのまま配置しています */
+        .site-footer { background-color: #5c473d; color: rgba(255, 255, 255, 0.9); padding: 80px 5% 30px; font-family: 'Noto Sans JP', sans-serif; position: relative; z-index: 20; }
+        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto 60px; }
+        .footer-brand .logo-group { margin-bottom: 20px; }
+        .footer-brand .logo-mark { background-color: #2b5c2a; }
+        .footer-desc { font-size: 0.85rem; line-height: 1.8; margin-bottom: 25px; color: rgba(255, 255, 255, 0.9); }
+        .footer-license { font-size: 0.75rem; line-height: 1.6; color: rgba(255, 255, 255, 0.7); margin-bottom: 30px; }
+        .social-links { display: flex; gap: 12px; }
+        .social-btn { width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: background-color 0.3s; }
+        .social-btn:hover { background-color: rgba(255, 255, 255, 0.25); }
+        .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+        .footer-col h4 { font-size: 1rem; font-weight: bold; margin-bottom: 25px; color: #fff; letter-spacing: 0.05em; }
+        .footer-col ul { list-style: none; padding: 0; }
+        .footer-col ul li { margin-bottom: 15px; }
+        .footer-col ul a { color: rgba(255, 255, 255, 0.8); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+        .footer-col ul a:hover { color: #fff; }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: rgba(255, 255, 255, 0.7); }
+        .footer-bottom-left { display: flex; align-items: center; gap: 20px; }
+        .footer-bottom-links { display: flex; align-items: center; gap: 20px; }
+        .footer-bottom-links a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s; }
+        .footer-bottom-links a:hover { color: #fff; }
+        .footer-talk-btn { background-color: rgba(255, 255, 255, 0.08); color: #fff; padding: 12px 24px; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: bold; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.15); transition: background-color 0.3s; margin-left: 20px; }
+        .footer-talk-btn:hover { background-color: rgba(255, 255, 255, 0.2); }
+        .footer-talk-btn svg { width: 20px; height: 20px; stroke: var(--accent-green); }
+
+        @media (max-width: 900px) {
+            nav ul { display: none; /* スマホでは一旦メニューを非表示 */ }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+            .footer-brand { grid-column: 1 / -1; margin-bottom: 20px; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+            .footer-bottom-left, .footer-bottom-links { flex-direction: column; gap: 10px; }
+            .footer-talk-btn { margin-left: 0; }
+        }
+        @media (max-width: 600px) { .footer-top { grid-template-columns: 1fr; gap: 30px; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo-group" style="text-decoration: none;">
+        <div class="logo-mark">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        </div>
+        <div class="logo-text">
+            <span class="ja">結縁地</span>
+            <span class="en">Yuenchi LLC</span>
+        </div>
+    </a>
+    <nav>
+        <ul id="global-nav">
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="business.html" class="active">事業内容</a></li>
+            <li><a href="school.html">スクール</a></li>
+            <li><a href="company.html">会社概要</a></li>
+            <li><a href="blog.html">ブログ</a></li>
+            <li><a href="contact.html" class="nav-contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="business-hero" data-aos="fade-in">
+    <div class="hero-content">
+        <span class="hero-label">BUSINESS</span>
+        <h1 data-aos="fade-up" data-aos-delay="100">私たちの事業</h1>
+        <p data-aos="fade-up" data-aos-delay="200">
+            リセール事業・越境EC・物販スクール「LunaFlow」の3つの柱で、<br>
+            循環型ビジネスと新しい働き方を創造します。
+        </p>
+        
+        <div class="hero-badges" data-aos="fade-up" data-aos-delay="300">
+            <div class="badge">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                古物商許可取得済み
+            </div>
+            <div class="badge">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                合同会社
+            </div>
+            <div class="badge">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                サステナブル経営
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-top">
+        <div class="footer-col footer-brand">
+            <div class="logo-group">
+                <div class="logo-mark">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#fff;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <div class="logo-text" style="color:#fff;">
+                    <span class="ja">結縁地</span>
+                    <span class="en">Yuenchi LLC</span>
+                </div>
+            </div>
+            <p class="footer-desc">
+                「ご縁を結ぶ場所」として、良い品と人、新しい働き方と女性をつなぐプラットフォームです。リセール事業・越境EC・物販スクールを通じて、三方よしの循環型ビジネスを実現します。
+            </p>
+            <p class="footer-license">
+                古物商許可取得済み<br>
+                合同会社結縁地 / Yuenchi LLC
+            </p>
+            <div class="social-links">
+                <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+                <a href="#" class="social-btn" style="font-weight:bold; font-size:10px;">LINE</a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>事業内容</h4>
+            <ul>
+                <li><a href="business.html#resale">リセール事業</a></li>
+                <li><a href="business.html#ec">越境EC事業</a></li>
+                <li><a href="school.html">物販スクール LunaFlow</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>会社情報</h4>
+            <ul>
+                <li><a href="company.html">会社概要</a></li>
+                <li><a href="blog.html">ブログ</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>サポート</h4>
+            <ul>
+                <li><a href="privacy.html">プライバシーポリシー</a></li>
+                <li><a href="law.html">特定商取引法に基づく表記</a></li>
+                <li><a href="faq.html">よくある質問</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-left">
+            <span>&copy; 2026 合同会社結縁地（Yuenchi LLC） All rights reserved.</span>
+            <span>古物商許可番号 : 取得済み</span>
+        </div>
+        <div class="footer-bottom-links">
+            <a href="privacy.html">プライバシーポリシー</a>
+            <a href="law.html">特定商取引法</a>
+            
+            <a href="contact.html" class="footer-talk-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+                Talk with Us
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true, duration: 1000 });
+</script>
+
+</body>
+</html>
