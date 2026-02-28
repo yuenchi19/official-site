@@ -525,6 +525,201 @@
         });
     });
 </script>
+    <style>
+    /* =========================================
+       お気軽にご相談ください（Contact）セクション
+       ========================================= */
+    .contact-section {
+        /* 背景色を既存の変数（ベージュ）と白のグラデーションでふんわり光るように設定 */
+        background: radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, var(--bg-beige) 70%);
+        padding: 120px 5% 0; /* 下部に茶色の帯を配置するため、padding-bottomは0 */
+        text-align: center;
+        position: relative;
+    }
+
+    .contact-inner {
+        max-width: 800px;
+        margin: 0 auto;
+        padding-bottom: 80px; /* 内部コンテンツの下余白 */
+    }
+
+    .contact-label {
+        color: var(--accent-green);
+        font-size: 0.75rem;
+        font-weight: bold;
+        letter-spacing: 0.15em;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+
+    .contact-label svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .contact-section h2 {
+        font-family: var(--font-serif);
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        color: var(--text-dark);
+        margin-bottom: 25px;
+        letter-spacing: 0.05em;
+        line-height: 1.4;
+    }
+
+    .contact-desc {
+        font-size: 0.95rem;
+        line-height: 2;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+    /* ボタン群 */
+    .contact-btn-group {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+    }
+
+    .c-btn {
+        padding: 16px 36px;
+        border-radius: 40px;
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: bold;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* 参考サイトのような、少し浮き上がるホバーアクション */
+    .c-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .c-btn-primary {
+        background-color: var(--accent-green);
+        color: #fff;
+    }
+
+    .c-btn-secondary {
+        background-color: #fff;
+        color: var(--text-dark);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* 下部情報アイコン群 */
+    .contact-info-group {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        color: #666;
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+    }
+
+    .c-info-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .c-info-item svg {
+        width: 16px;
+        height: 16px;
+        color: var(--accent-green);
+    }
+
+    /* フッター帯（Talk with Us） */
+    .contact-bottom-bar {
+        background-color: #5c473d; /* 画像の茶色 */
+        width: 100%;
+        padding: 15px 5%;
+        display: flex;
+        justify-content: flex-end; /* 右寄せ */
+    }
+
+    .talk-btn {
+        background-color: rgba(255,255,255,0.05);
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: background-color 0.3s;
+    }
+
+    .talk-btn:hover {
+        background-color: rgba(255,255,255,0.15);
+    }
+
+    @media (max-width: 768px) {
+        .contact-btn-group { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto 40px; }
+        .c-btn { width: 100%; justify-content: center; }
+        .contact-info-group { flex-direction: column; gap: 15px; align-items: center; }
+        .contact-bottom-bar { justify-content: center; }
+    }
+</style>
+
+<section class="contact-section" id="contact">
+    <div class="contact-inner">
+        <div data-aos="fade-up">
+            <span class="contact-label">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                CONTACT US
+            </span>
+            
+            <h2>お気軽に<br>ご相談ください</h2>
+            
+            <p class="contact-desc">
+                事業に関するご質問・取引のご相談・スクール「LunaFlow」へのお問い合わせなど、<br>どんなことでもお気軽にご連絡ください。
+            </p>
+        </div>
+
+        <div class="contact-btn-group" data-aos="fade-up" data-aos-delay="100">
+            <a href="#" class="c-btn c-btn-primary">
+                お問い合わせはこちら
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#" class="c-btn c-btn-secondary">
+                スクール詳細を見る
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            </a>
+        </div>
+
+        <div class="contact-info-group" data-aos="fade-up" data-aos-delay="200">
+            <div class="c-info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                平日 10:00〜18:00 対応
+            </div>
+            <div class="c-info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                古物商許可取得済み
+            </div>
+            <div class="c-info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>
+                合同会社結縁地
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-bottom-bar">
+        <a href="#" class="talk-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#86efac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+            Talk with Us
+        </a>
+    </div>
+</section>
     <section id="company-profile">
         <div class="section-header" data-aos="fade-up">
             <span class="label">COMPANY</span>
