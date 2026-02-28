@@ -727,8 +727,7 @@
         </div>
     </div>
 </section>
-
-    <div id="add-next-here"></div>
+</section>
 
 </div> <style>
     .site-footer {
@@ -737,6 +736,7 @@
         padding: 80px 5% 30px;
         font-family: 'Noto Sans JP', sans-serif;
         position: relative;
+        z-index: 20; /* ★重要：背景画像の裏に隠れないように一番前に出す設定 */
     }
 
     .footer-top {
@@ -836,6 +836,7 @@
     .footer-talk-btn:hover { background-color: rgba(255, 255, 255, 0.2); }
     .footer-talk-btn svg { width: 20px; height: 20px; stroke: var(--accent-green); }
 
+    /* スマホ画面用の設定 */
     @media (max-width: 900px) {
         .footer-top { grid-template-columns: 1fr 1fr; }
         .footer-brand { grid-column: 1 / -1; margin-bottom: 20px; }
@@ -918,10 +919,8 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // 1. AOS（ふわっと表示）の初期化
     AOS.init({ once: true, duration: 1000 });
 
-    // 2. 扉が開くアニメーションのスクロール連動
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
         const door = document.getElementById('door');
@@ -938,16 +937,11 @@
         }
     });
 
-    // 3. 現在のページURLを取得して、ヘッダーの該当メニューを太字（active）にする
     document.addEventListener('DOMContentLoaded', function() {
-        // 現在のURLのファイル名部分を取得（例: company.html）
         const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-        
-        // id="global-nav" が付いているナビゲーションのリンクを取得
         const navLinks = document.querySelectorAll('#global-nav a');
         navLinks.forEach(link => {
             const href = link.getAttribute('href');
-            // hrefが現在のURLと一致していたら active クラスを付与
             if (href === currentPath) {
                 link.classList.add('active');
             }
