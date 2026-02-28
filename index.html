@@ -215,22 +215,52 @@
         const opacityRate = 1 - (scrolled / 400);
         
         if (scrolled < 500) {
-            door.style.transform = `scale(${zoomRate})`;
-            door.style.opacity = opacityRate;
-            content.style.opacity = 0;
-        } else {
-            door.style.opacity = 0;
-            const contentOpacity = Math.min((scrolled - 500) / 400, 1);
-            content.style.opacity = contentOpacity;
-            content.style.transform = `translate(-50%, ${-50 - (10 * (1 - contentOpacity))}%)`;
-        }
-    });
-</script>
-</body>
-</html>
-<section id="business-details">
+            door.style.transform = `<section id="business-fields">
+        <div class="section-header" data-aos="fade-up">
+            <span class="label">OUR BUSINESS</span>
+            <h2>3つの事業領域</h2>
+            <p>リセール・越境EC・物販スクールの3軸で、<br>価値ある「ご縁」を生み出し続けます。</p>
+        </div>
+
+        <div class="card-container">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-img"><img src="service1.jpg" alt=""></div>
+                <div class="card-body bg-green">
+                    <span style="font-size:0.6rem; display:block; margin-bottom:10px;">RESALE BUSINESS</span>
+                    <h3>ハイブランドリセール</h3>
+                    <p>ルイ・ヴィトン、グッチ、シャネルなどのブランド品を、確かな鑑定眼で仕入れ・販売。リペア技術で価値を蘇らせます。</p>
+                    <div class="tags"><span>財布・バッグ</span><span>アパレル</span><span>自社EC</span></div>
+                    <a href="#detail-01" class="btn-more">詳しく見る →</a>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img"><img src="service2.jpg" alt=""></div>
+                <div class="card-body bg-beige">
+                    <span style="font-size:0.6rem; display:block; margin-bottom:10px;">CROSS-BORDER EC</span>
+                    <h3>越境EC事業</h3>
+                    <p>日本のおもちゃや伝統工芸品など、海外で人気の高い製品を世界へ。独自のルートでグローバル市場へ展開します。</p>
+                    <div class="tags"><span>ホビー</span><span>海外販売</span><span>準備中</span></div>
+                    <a href="#detail-02" class="btn-more">詳しく見る →</a>
+                </div>
+            </div>
+
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img"><img src="service3.jpg" alt=""></div>
+                <div class="card-body bg-white">
+                    <span style="font-size:0.6rem; display:block; margin-bottom:10px;">SCHOOL</span>
+                    <h3>物販スクール LunaFlow</h3>
+                    <p>受講生と共に成長するサブスクリプション型の伴走スクール。自立した物販ビジネスの構築をサポートします。</p>
+                    <div class="tags"><span>サブスク型</span><span>伴走サポート</span><span>専用チャット</span></div>
+                    <a href="#detail-03" class="btn-more">スクールを見る →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="business-details">
         
-        <div class="detail-row" style="background-color: #fff;">
+        <div class="detail-row" id="detail-01" style="background-color: #fff;">
             <div class="detail-container">
                 <div class="detail-text" data-aos="fade-right">
                     <span class="detail-num">01</span>
@@ -247,12 +277,13 @@
                 </div>
                 <div class="detail-image" data-aos="zoom-in">
                     <div class="image-wrapper">
-                        <img src="detail1.jpg" alt="リセール事業の様子"> </div>
+                        <img src="detail1.jpg" alt="">
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="detail-row" style="background-color: var(--bg-beige);">
+        <div class="detail-row" id="detail-02" style="background-color: var(--bg-beige);">
             <div class="detail-container reverse">
                 <div class="detail-text" data-aos="fade-left">
                     <span class="detail-num">02</span>
@@ -269,12 +300,13 @@
                 </div>
                 <div class="detail-image" data-aos="zoom-in">
                     <div class="image-wrapper">
-                        <img src="detail2.jpg" alt="越境ECの様子"> </div>
+                        <img src="detail2.jpg" alt="">
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="detail-row" style="background-color: #fff;">
+        <div class="detail-row" id="detail-03" style="background-color: #fff;">
             <div class="detail-container">
                 <div class="detail-text" data-aos="fade-right">
                     <span class="detail-num">03</span>
@@ -292,50 +324,62 @@
                 </div>
                 <div class="detail-image" data-aos="zoom-in">
                     <div class="image-wrapper">
-                        <img src="detail3.jpg" alt="スクールの様子"> </div>
+                        <img src="detail3.jpg" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-
     </section>
 
-    <style>
-        /* 詳細セクションのスタイル */
-        #business-details { overflow: hidden; }
-        .detail-row { padding: 140px 5%; border-bottom: 1px solid #f0f0f0; }
-        .detail-container { 
-            max-width: 1200px; margin: 0 auto; 
-            display: flex; align-items: center; gap: 80px; 
-        }
-        .detail-container.reverse { flex-direction: row-reverse; }
+</div> <style>
+    /* 追加分のスタイル統合 */
+    #business-details { overflow: hidden; }
+    .detail-row { padding: 140px 5%; border-bottom: 1px solid #f0f0f0; }
+    .detail-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 80px; }
+    .detail-container.reverse { flex-direction: row-reverse; }
+    .detail-text { flex: 1; }
+    .detail-num { font-size: 0.8rem; letter-spacing: 0.5em; color: var(--accent-green); display: block; margin-bottom: 20px; font-weight: 600; }
+    .detail-text h3 { font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 15px; letter-spacing: 0.05em; }
+    .detail-lead { font-size: 1.1rem; color: #333; margin-bottom: 30px; font-weight: 500; }
+    .detail-description { font-size: 0.95rem; color: #666; line-height: 2; margin-bottom: 35px; text-align: justify; }
+    .detail-features { list-style: none; padding-left: 0; }
+    .detail-features li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.9rem; color: #444; }
+    .detail-features li::before { content: ''; position: absolute; left: 0; top: 10px; width: 15px; height: 1px; background: var(--accent-green); }
+    .detail-image { flex: 1; }
+    .image-wrapper { width: 100%; aspect-ratio: 4 / 3; background: #eee; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
+    .image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s; }
+    .image-wrapper:hover img { transform: scale(1.05); }
 
-        .detail-text { flex: 1; }
-        .detail-num { font-size: 0.8rem; letter-spacing: 0.5em; color: var(--accent-green); display: block; margin-bottom: 20px; font-weight: 600; }
-        .detail-text h3 { font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 15px; letter-spacing: 0.05em; }
-        .detail-lead { font-size: 1.1rem; color: #333; margin-bottom: 30px; font-weight: 500; }
-        .detail-description { font-size: 0.95rem; color: #666; line-height: 2; margin-bottom: 35px; text-align: justify; }
+    @media (max-width: 900px) {
+        .detail-row { padding: 80px 5%; }
+        .detail-container { flex-direction: column !important; gap: 40px; }
+        .detail-text h3 { font-size: 1.8rem; }
+    }
+</style>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ once: true, duration: 1000 });
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const door = document.getElementById('door');
+        const content = document.getElementById('hero-content');
         
-        .detail-features { list-style: none; padding-left: 0; }
-        .detail-features li { 
-            position: relative; padding-left: 25px; margin-bottom: 12px; 
-            font-size: 0.9rem; color: #444; font-weight: 400;
+        const zoomRate = 1 + (scrolled / 500);
+        const opacityRate = 1 - (scrolled / 400);
+        
+        if (scrolled < 500) {
+            door.style.transform = `scale(${zoomRate})`;
+            door.style.opacity = opacityRate;
+            content.style.opacity = 0;
+        } else {
+            door.style.opacity = 0;
+            const contentOpacity = Math.min((scrolled - 500) / 400, 1);
+            content.style.opacity = contentOpacity;
+            content.style.transform = `translate(-50%, ${-50 - (10 * (1 - contentOpacity))}%)`;
         }
-        .detail-features li::before {
-            content: ''; position: absolute; left: 0; top: 10px;
-            width: 15px; height: 1px; background: var(--accent-green);
-        }
-
-        .detail-image { flex: 1; }
-        .image-wrapper { 
-            width: 100%; aspect-ratio: 4 / 3; background: #eee; 
-            overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.08); 
-        }
-        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s; }
-        .image-wrapper:hover img { transform: scale(1.05); }
-
-        @media (max-width: 900px) {
-            .detail-row { padding: 80px 5%; }
-            .detail-container { flex-direction: column !important; gap: 50px; }
-            .detail-text h3 { font-size: 1.8rem; }
-        }
-    </style>
+    });
+</script>
+</body>
+</html>
