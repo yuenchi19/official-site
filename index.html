@@ -24,21 +24,35 @@
             line-height: 1.8;
         }
 
-        /* --- ヘッダー --- */
-        header {
-            position: fixed; top: 0; width: 100%; padding: 20px 4%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
-        }
-        .logo-group { display: flex; align-items: center; gap: 12px; }
-        .logo-mark { width: 35px; height: 35px; background: var(--accent-green); border-radius: 6px; }
-        .logo-text { font-family: var(--font-serif); font-size: 1.1rem; letter-spacing: 0.1em; color: #fff; text-decoration: none; }
-        .logo-text span { display: block; font-size: 0.6rem; font-family: 'Noto Sans JP'; font-weight: 100; }
-
+        /* --- ヘッダー（更新版） --- */
         nav ul { display: flex; list-style: none; gap: 25px; align-items: center; }
-        nav a { text-decoration: none; color: #fff; font-size: 0.85rem; font-weight: 300; }
+        nav a { 
+            text-decoration: none; 
+            color: #fff; 
+            font-size: 0.85rem; 
+            font-weight: 300; 
+            position: relative;
+            transition: color 0.3s, font-weight 0.3s;
+        }
+        
+        /* 現在いるページ（アクティブ）のスタイル */
+        nav a.active {
+            font-weight: 700; /* 太文字にする */
+        }
+        /* 文字の下に緑のラインを引く装飾（お好みで外してもOKです） */
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-green);
+            border-radius: 2px;
+        }
+
         .nav-contact { background: var(--accent-green); padding: 10px 22px; border-radius: 4px; font-weight: 500; }
+        .nav-contact.active::after { display: none; } /* ボタン型の場合は下線を消す */
 
         /* --- 演出エリア（固定） --- */
         .stage {
@@ -205,13 +219,13 @@
         <div class="logo-text">結縁地<span>Yuenchi LLC</span></div>
     </div>
 <nav>
-        <ul>
-            <li><a href="#">ホーム</a></li>
-            <li><a href="#business-fields">事業内容</a></li>
-            <li><a href="#school">スクール</a></li>
-            <li><a href="#company-profile">会社概要</a></li>
-            <li><a href="#blog">ブログ</a></li>
-            <li><a href="#" class="nav-contact">お問い合わせ</a></li>
+        <ul id="global-nav">
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="business.html">事業内容</a></li>
+            <li><a href="school.html">スクール</a></li>
+            <li><a href="company.html">会社概要</a></li>
+            <li><a href="blog.html">ブログ</a></li>
+            <li><a href="contact.html" class="nav-contact">お問い合わせ</a></li>
         </ul>
     </nav>
 </header>
@@ -712,58 +726,234 @@
             </div>
         </div>
     </div>
-
-    <div class="contact-bottom-bar">
-        <a href="#" class="talk-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#86efac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
-            Talk with Us
-        </a>
-    </div>
 </section>
-    <section id="company-profile">
-        <div class="section-header" data-aos="fade-up">
-            <span class="label">COMPANY</span>
-            <h2>会社概要</h2>
-        </div>
-        <div class="profile-box" data-aos="fade-up">
-            <dl class="info-row"><dt>会社名</dt><dd>合同会社結縁地（Yuenchi LLC）</dd></dl>
-            <dl class="info-row"><dt>代表者</dt><dd>落合　勇人</dd></dl>
-            <dl class="info-row"><dt>本店</dt><dd>〒107-0061 東京都港区北青山1-3-1　アールキューブ青山3階</dd></dl>
-            <dl class="info-row"><dt>営業所</dt><dd>〒344-0023 埼玉県春日部市大枝90-14</dd></dl>
-            <dl class="info-row"><dt>電話番号</dt><dd>050-6879-4944（10時〜19時）</dd></dl>
-            <dl class="info-row"><dt>メールアドレス</dt><dd>info@yuen-chi.com</dd></dl>
-            <dl class="info-row"><dt>資本金</dt><dd>300万円</dd></dl>
-            <dl class="info-row"><dt>設立</dt><dd>2024年4月11日</dd></dl>
-            <dl class="info-row"><dt>資格</dt><dd>埼玉県公安委員会 許可 第431260068602号</dd></dl>
-            <dl class="info-row"><dt>事業内容</dt><dd>古物の買取および販売／物販スクール／コンサル業</dd></dl>
-            <dl class="info-row"><dt>対応エリア</dt><dd>日本国内・アジア圏</dd></dl>
-        </div>
-    </section>
 
     <div id="add-next-here"></div>
 
-</div>
+</div> <style>
+    .site-footer {
+        background-color: #5c473d; /* 画像のブラウン背景 */
+        color: rgba(255, 255, 255, 0.9);
+        padding: 80px 5% 30px;
+        font-family: 'Noto Sans JP', sans-serif;
+        position: relative;
+    }
 
-<footer>
-    <p>&copy; 2024 Yuenchi LLC</p>
+    .footer-top {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto 60px;
+    }
+
+    .footer-brand .logo-group { margin-bottom: 20px; }
+    
+    .footer-desc {
+        font-size: 0.85rem;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .footer-license {
+        font-size: 0.75rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 30px;
+    }
+
+    .social-links { display: flex; gap: 12px; }
+    .social-btn {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+    .social-btn:hover { background-color: rgba(255, 255, 255, 0.25); }
+    .social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .footer-col h4 {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: #fff;
+        letter-spacing: 0.05em;
+    }
+
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 15px; }
+    .footer-col ul a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: color 0.3s;
+    }
+    .footer-col ul a:hover { color: #fff; }
+
+    .footer-bottom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-bottom-left { display: flex; align-items: center; gap: 20px; }
+    .footer-bottom-links { display: flex; align-items: center; gap: 20px; }
+    .footer-bottom-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .footer-bottom-links a:hover { color: #fff; }
+
+    .footer-talk-btn {
+        background-color: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 30px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        transition: background-color 0.3s;
+        margin-left: 20px;
+    }
+    .footer-talk-btn:hover { background-color: rgba(255, 255, 255, 0.2); }
+    .footer-talk-btn svg { width: 20px; height: 20px; stroke: var(--accent-green); }
+
+    @media (max-width: 900px) {
+        .footer-top { grid-template-columns: 1fr 1fr; }
+        .footer-brand { grid-column: 1 / -1; margin-bottom: 20px; }
+        .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+        .footer-bottom-left { flex-direction: column; gap: 10px; }
+        .footer-bottom-links { flex-direction: column; gap: 15px; }
+        .footer-talk-btn { margin-left: 0; }
+    }
+    @media (max-width: 600px) {
+        .footer-top { grid-template-columns: 1fr; gap: 30px; }
+    }
+</style>
+
+<footer class="site-footer">
+    <div class="footer-top">
+        <div class="footer-col footer-brand">
+            <div class="logo-group">
+                <div class="logo-mark"></div>
+                <div class="logo-text">結縁地<span>Yuenchi LLC</span></div>
+            </div>
+            <p class="footer-desc">
+                「ご縁を結ぶ場所」として、良い品と人、新しい働き方と女性をつなぐプラットフォームです。リセール事業・越境EC・物販スクールを通じて、三方よしの循環型ビジネスを実現します。
+            </p>
+            <p class="footer-license">
+                古物商許可取得済み<br>
+                合同会社結縁地 / Yuenchi LLC
+            </p>
+            <div class="social-links">
+                <a href="#" class="social-btn"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                <a href="#" class="social-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
+                <a href="#" class="social-btn" style="font-weight:bold; font-size:10px;">LINE</a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>事業内容</h4>
+            <ul>
+                <li><a href="business.html#resale">リセール事業</a></li>
+                <li><a href="business.html#ec">越境EC事業</a></li>
+                <li><a href="school.html">物販スクール LunaFlow</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>会社情報</h4>
+            <ul>
+                <li><a href="company.html">会社概要</a></li>
+                <li><a href="blog.html">ブログ</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>サポート</h4>
+            <ul>
+                <li><a href="privacy.html">プライバシーポリシー</a></li>
+                <li><a href="law.html">特定商取引法に基づく表記</a></li>
+                <li><a href="faq.html">よくある質問</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-left">
+            <span>&copy; 2025 合同会社結縁地（Yuenchi LLC） All rights reserved.</span>
+            <span>古物商許可番号 : 取得済み</span>
+        </div>
+        <div class="footer-bottom-links">
+            <a href="privacy.html">プライバシーポリシー</a>
+            <a href="law.html">特定商取引法</a>
+            
+            <a href="contact.html" class="footer-talk-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+                Talk with Us
+            </a>
+        </div>
+    </div>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+    // 1. AOS（ふわっと表示）の初期化
     AOS.init({ once: true, duration: 1000 });
+
+    // 2. 扉が開くアニメーションのスクロール連動
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
         const door = document.getElementById('door');
         const content = document.getElementById('hero-content');
-        if (scrolled < 500) {
-            door.style.transform = `scale(${1 + scrolled / 500})`;
-            door.style.opacity = 1 - scrolled / 400;
-            content.style.opacity = 0;
-        } else {
-            door.style.opacity = 0;
-            content.style.opacity = Math.min((scrolled - 500) / 400, 1);
+        if(door && content){
+            if (scrolled < 500) {
+                door.style.transform = `scale(${1 + scrolled / 500})`;
+                door.style.opacity = 1 - scrolled / 400;
+                content.style.opacity = 0;
+            } else {
+                door.style.opacity = 0;
+                content.style.opacity = Math.min((scrolled - 500) / 400, 1);
+            }
         }
     });
+
+    // 3. 現在のページURLを取得して、ヘッダーの該当メニューを太字（active）にする
+    document.addEventListener('DOMContentLoaded', function() {
+        // 現在のURLのファイル名部分を取得（例: company.html）
+        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        
+        // id="global-nav" が付いているナビゲーションのリンクを取得
+        const navLinks = document.querySelectorAll('#global-nav a');
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            // hrefが現在のURLと一致していたら active クラスを付与
+            if (href === currentPath) {
+                link.classList.add('active');
+            }
+        });
+    });
 </script>
+
 </body>
 </html>
